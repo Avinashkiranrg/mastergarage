@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <dimen name="bottom_navigation_icon_size" tools:override="true">24dp</dimen>
+    <dimen name="design_bottom_navigation_height" tools:override="true">65dp</dimen>
+    <dimen name="twenty_two_dip">10dp</dimen>
+    <dimen name="fourteen_dip">10dp</dimen>
+
+<!--    <dimen name="fifty_six_dip_text_size">56sp</dimen>-->
+<!--    <dimen name="forty_one_dip_text_size">41sp</dimen>-->
+<!--    <dimen name="twenty_eight_dip_text_size">28sp</dimen>-->
+<!--    <dimen name="twenty_two_dip_text_size">22sp</dimen>-->
+<!--    <dimen name="twenty_dip_text_size">20sp</dimen>-->
+<!--    <dimen name="eighteen_dip_text_size">18sp</dimen>-->
+<!--    <dimen name="fifteen_dip_text_size">15sp</dimen>-->
+<!--    <dimen name="fourteen_dip_text_size">14sp</dimen>-->
+<!--    <dimen name="twelve_dip_text_size">12sp</dimen>-->
+<!--    <dimen name="ten_dip_text_size">10sp</dimen>-->
+<!--    <dimen name="nine_dip_text_size">9sp</dimen>-->
+<!--    <dimen name="eight_dip_text_size">8sp</dimen>-->
+<!--    <dimen name="seven_dip_text_size">7sp</dimen>-->
+
+    <dimen name="fifty_six_dip_text_size">40sp</dimen>
+    <dimen name="forty_one_dip_text_size">35sp</dimen>
+    <dimen name="twenty_eight_dip_text_size">25sp</dimen>
+    <dimen name="twenty_two_dip_text_size">20sp</dimen>
+    <dimen name="twenty_dip_text_size">17sp</dimen>
+    <dimen name="eighteen_dip_text_size">15sp</dimen>
+    <dimen name="fifteen_dip_text_size">13sp</dimen>
+    <dimen name="fourteen_dip_text_size">12sp</dimen>
+    <dimen name="twelve_dip_text_size">10sp</dimen>
+    <dimen name="ten_dip_text_size">9sp</dimen>
+    <dimen name="nine_dip_text_size">8sp</dimen>
+    <dimen name="eight_dip_text_size">7sp</dimen>
+    <dimen name="seven_dip_text_size">7sp</dimen>
+
+    <dimen name="E_twelve_dip_text_size">12sp</dimen>
+
+
+    <dimen name="speech_bubble_corners">10dp</dimen>
+    <dimen name="speech_bubble_corners_plus_tail">15dp</dimen>
+    <dimen name="speech_bubble_spacing">5dp</dimen>
+    <dimen name="speech_bubble_tail">25dp</dimen>
+</resources>

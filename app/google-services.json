@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "175150939317",
+    "firebase_url": "https://carsellingapp-a267e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "carsellingapp-a267e",
+    "storage_bucket": "carsellingapp-a267e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175150939317:android:ffba06e7392b3bbaa4d2fc",
+        "android_client_info": {
+          "package_name": "com.example.uidesign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175150939317-kh1htg8rvcbtb99knic02747mbdmg2no.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uidesign",
+            "certificate_hash": "77caac81c05263ae954558ac3508830c28031fd4"
+          }
+        },
+        {
+          "client_id": "175150939317-550lk1qol4rhpki1ifhueagp9n5vqaut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL1Yupmk2lV-h6m4fgprpm4Rbr7Il3GL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175150939317-550lk1qol4rhpki1ifhueagp9n5vqaut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175150939317:android:3fda4478ebbc720ea4d2fc",
+        "android_client_info": {
+          "package_name": "com.vendor.mastergarage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175150939317-7jsim6f0nr1j9nq3toksb1ojubsriblg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vendor.mastergarage",
+            "certificate_hash": "77caac81c05263ae954558ac3508830c28031fd4"
+          }
+        },
+        {
+          "client_id": "175150939317-550lk1qol4rhpki1ifhueagp9n5vqaut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAL1Yupmk2lV-h6m4fgprpm4Rbr7Il3GL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175150939317-550lk1qol4rhpki1ifhueagp9n5vqaut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

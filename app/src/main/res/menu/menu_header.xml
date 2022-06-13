@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/location"
+        android:orderInCategory="1"
+        android:title="Location"
+        app:actionLayout="@layout/layout_location_menu"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/qrcode"
+        android:orderInCategory="2"
+        android:title="QR Code"
+        app:actionLayout="@layout/layout_qr_chip"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/notification"
+        android:orderInCategory="4"
+        android:title="Notification"
+        app:actionLayout="@layout/layout_notification_menu"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/searchView"
+        android:orderInCategory="3"
+        android:title="Search View"
+        app:actionLayout="@layout/layout_search_menu"
+        app:showAsAction="always" />
+
+</menu>

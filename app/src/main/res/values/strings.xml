@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">Master Garage</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="booking">My Booking</string>
+    <string name="qr">My QR</string>
+    <string name="profile">Profile</string>
+    <string name="scanner">Scan QR</string>
+    <string name="used_car_dealer">Used Car Dealer</string>
+    <string name="new_car_dealer">New Car Dealer</string>
+    <string name="get_otp"><u>Get OTP</u></string>
+    <string name="viewDet"><u>View Details</u></string>
+    <string name="india_91">INDIA (+91)</string>
+    <string name="enter_otp">ENTER OTP</string>
+    <string name="login_as">Login as</string>
+    <string name="login">Login</string>
+    <string name="welcome_partners">Welcome Partners</string>
+    <string name="submit">Submit</string>
+    <string name="todo">TODO</string>
+    <string name="inventory">Inventory</string>
+    <string name="leads">Leads</string>
+    <string name="account">Account</string>
+    <string name="add_vehicle">Add Vehicle</string>
+    <string name="registration_number">Registration Number</string>
+    <string name="kms_driven">Kms Driven</string>
+    <string name="insurance_validity">Insurance Validity</string>
+    <string name="ask_price">Ask Price</string>
+    <string name="original_price">Original Price</string>
+    <string name="ownwer">Ownwer</string>
+    <string name="special_benefits">Special Benefits</string>
+    <string name="free_rc_transfer">Free RC Transfer</string>
+    <string name="doorstep_delivery">Doorstep Delivery</string>
+    <string name="finance_available">Finance Available</string>
+    <string name="logout"><u>Logout</u></string>
+    <string name="_5_vasant_kunj_shanti_nagar_near_andheri_metro_station_andheri_east_mumbai_123_456_maharashtra_india">5, Vasant Kunj, Shanti Nagar, Near Andheri Metro Station, Andheri East, Mumbai-123 456, Maharashtra, India</string>
+    <string name="refer_a_friend_to_master_garage_amp_earn_mg_coins"><![CDATA[Refer a friend to Master Garage & earn MG Coins]]></string>
+    <string name="refer_a_friend">Refer a friend</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="need_help">Need Help?</string>
+    <string name="notification_settings">Notification Settings</string>
+    <string name="alert_me_on_reminders_and_upcoming_appointment_notifications">Alert me on reminders and upcoming appointment notifications</string>
+    <string name="notify_me_about_offers_and_discounts_by_master_garage">Notify me about offers and discounts by Master Garage</string>
+    <string name="notify_me_via_e_mail_when_someone_sends_me_a_personalized_message">Notify me via e-mail when someone sends me a personalized message</string>
+    <string name="get_help">Get Help</string>
+    <string name="facing_some_issue_using_this_account">Facing some issue using this account?</string>
+    <string name="upload_images">Upload Images</string>
+    <string name="vehicle_name">Brand name</string>
+    <string name="new_vehicle">New Vehicle</string>
+    <string name="a">Add Vehicle</string>
+    <string name="periodic_nservice">Periodic Service</string>
+    <string name="denting_amp_npainting">Denting &amp; Painting</string>
+    <string name="ac_services_nrepairs">AC Services &amp; Repairs</string>
+    <string name="ac_services_n_repairs">AC Services &amp;Repairs</string>
+    <string name="battery_ncare">Battery Care</string>
+    <string name="wheel_ncare">Wheel Care</string>
+    <string name="mechanical_nrepairs">Mechanical Repairs</string>
+    <string name="inspection_nservice">Inspection Service</string>
+    <string name="car_inspection_amp_diagnostics">Car Inspection &amp; Diagnostics</string>
+    <string name="car_inspection_namp_diagnostics">Inspection &amp; Diagnosis</string>
+    <string name="road_side_nassistance">Road Side Assistance</string>
+
+    <string name="periodic_service">Periodic\nService</string>
+    <string name="denting_amp_painting">Denting\n&amp;Painting</string>
+    <string name="ac_services_repairs">AC Services\n&amp;Repairs</string>
+    <string name="battery_care">Battery\nCare</string>
+    <string name="wheel_care">Wheel\nCare</string>
+
+    <string name="year_model">Year model</string>
+    <string name="note1">Note: You can only schedule pick up not more then 24 hrs before  the scheduled service timing, In case customer agree for early  pick up, you have to notify MG about the schedule</string>
+    <string name="note2">Note: Garage must make sure that the driver should be eligible to  drive a vehicle, hence must have the driving license, Incase of any  false information submitted, the garage will be liable for damages</string>
+    <string name="view_job_card"><u>View Job Card</u></string>
+    <string name="delete"><u>Delete</u></string>
+    <string name="show_more"><u>Show More</u></string>
+    <string name="view_all_images"><u>View all images</u></string>
+    <string name="total_payment">Total Payment:</string>
+    <string name="payment_status">Payment Status:</string>
+    <string name="payment_method">Payment Method</string>
+    <string name="payment_dat_amp_time"><![CDATA[Payment Date & Time:]]></string>
+    <string name="payment_id">Payment ID:</string>
+    <string name="total">Total</string>
+    <string name="other_charges">Other Charges</string>
+    <string name="taxes">Taxes</string>
+    <string name="grand_total">Grand Total</string>
+    <string name="add_service_recommendations">Add Service Recommendations</string>
+    <string name="services_recommended">Services Recommended</string>
+    <string name="service_instructions">Service Instructions</string>
+    <string name="service_request">Service Request</string>
+    <string name="master_garage">Master Garage</string>
+    <string name="write_a_review">Write a review</string>
+    <string name="appointment_date_amp_time"><![CDATA[Appointment Date & Time]]></string>
+
+    <array name="initial_slider_values">
+        <item>0.0</item>
+        <item>100.0</item>
+    </array>
+
+    <array name="type_discount">
+        <item>Type Of Discount</item>
+        <item>Flat</item>
+        <item>Percentage</item>
+    </array>
+    <array name="years_Array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </array>
+</resources>

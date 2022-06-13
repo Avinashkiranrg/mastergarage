@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="yellow">#FFD700</color>
+    <color name="black">#FF000000</color>
+    <color name="black2">#2A2A43</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="blue">#232D61</color>
+    <color name="blue2">#4250F0</color>
+    <color name="light_color">#DDDDDF</color>
+    <color name="orange">#EF9409</color>
+    <color name="red">#F8484A</color>
+    <color name="green">#F541A23E</color>
+    <color name="fuel_green">#97D7BA</color>
+    <color name="gray">#F57A807A</color>
+    <color name="card_gray">#F4F3F3</color>
+    <color name="get_OtpColor">#2962FF</color>
+    <color name="green2">#53BD8C</color>
+
+    <color name="status_bar_light">#FFea80fc</color>
+    <color name="status_bar_dark">#FF263238</color>
+    <color name="editTextBoxColor">#E0DEDE</color>
+    <color name="light_text_color">#D1D3D4</color>
+    <color name="editTextColor">#E0DEDE</color>
+    <color name="bottomCardColor">#FBFAFA</color>
+    <color name="leadsBackground">#F8F4F4</color>
+    <color name="light_color_for_icon">#B1ABAB</color>
+    <color name="light_color_">#606161</color>
+    <color name="notification_text_color">#142A62</color>
+    <color name="pink">#A330AB</color>
+    <color name="v_color">#6A6363</color>
+    <color name="discount_background">#8D95F5</color>
+    <color name="black3">#404040</color>
+</resources>

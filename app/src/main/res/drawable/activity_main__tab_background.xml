@@ -1,0 +1,13 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <item android:state_checked="true">
+        <layer-list>
+            <item android:gravity="top|center_horizontal" android:width="32dp">
+                <shape android:shape="rectangle">
+                    <corners android:bottomLeftRadius="2dp" android:bottomRightRadius="2dp" />
+                    <size android:height="3dp" tools:override="true" />
+                    <solid android:color="@color/yellow" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+</selector>

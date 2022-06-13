@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ServiceName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:textSize="@dimen/fifteen_dip_text_size" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/ServiceNameAll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/ten_dip_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/servicePrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/ic_currency_rupee"
+            android:fontFamily="@font/opensans_bold"
+            android:gravity="end"
+            android:textColor="@color/blue"
+            android:textSize="@dimen/fifteen_dip_text_size" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/viewDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_weight="1"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="end"
+            android:paddingTop="5dp"
+            android:text="View Details"
+            android:textColor="@color/blue2"
+            android:textSize="@dimen/twelve_dip_text_size" />
+    </LinearLayout>
+
+</LinearLayout>

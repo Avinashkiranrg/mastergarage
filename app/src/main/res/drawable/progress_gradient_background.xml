@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?><!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <item-->
+<!--        android:id="@android:id/background"-->
+<!--        android:height="10dp">-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <corners android:radius="20dp" />-->
+<!--            <solid android:color="@color/card_gray" />-->
+<!--        </shape>-->
+<!--    </item>-->
+
+<!--    <item-->
+<!--        android:id="@android:id/progress"-->
+<!--        android:height="10dp">-->
+<!--        <clip android:clipOrientation="horizontal">-->
+<!--            <shape>-->
+<!--                <corners android:radius="20dp"/>-->
+<!--                <gradient-->
+<!--                    android:angle="0"-->
+<!--                    android:centerColor="#6F54AF"-->
+<!--                    android:endColor="#7D79CD"-->
+<!--                    android:startColor="#966390"-->
+<!--                    android:type="linear" />-->
+<!--            </shape>-->
+<!--        </clip>-->
+<!--    </item>-->
+<!--</layer-list>-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@android:id/background" android:height="10dp">
+        <shape>
+            <corners android:radius="8dp" />
+            <solid android:color="@color/card_gray" />
+        </shape>
+    </item>
+
+    <item
+        android:id="@android:id/progress" android:height="10dp">
+        <scale android:scaleWidth="100%">
+            <shape>
+                <corners android:radius="8dp" />
+                <gradient
+                    android:angle="0"
+                    android:centerColor="#6F54AF"
+                    android:endColor="#7D79CD"
+                    android:startColor="#966390"
+                    android:type="linear" />
+            </shape>
+        </scale>
+    </item>
+</layer-list>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@+id/bookingFragment">
+
+    <fragment
+        android:id="@+id/serviceFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.service.ServiceFragment"
+        android:label="Service fragment"
+        tools:layout="@layout/fragment_service" />
+    <fragment
+        android:id="@+id/metricsFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.MetricsFragment"
+        android:label="Metrics fragment"
+        tools:layout="@layout/fragment_metrics" />
+    <fragment
+        android:id="@+id/bookingFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.booking.BookingFragment"
+        android:label="Booking fragment"
+        tools:layout="@layout/fragment_booking" />
+    <fragment
+        android:id="@+id/chatsFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.ChatsFragment"
+        android:label="Chats fragment"
+        tools:layout="@layout/fragment_chats" />
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.AccountFragment"
+        android:label="Account fragment"
+        tools:layout="@layout/fragment_account" >
+        <action
+            android:id="@+id/action_accountFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_teamFragment"
+            app:destination="@id/teamFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_contactUsFragment"
+            app:destination="@id/contactUsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_discountsFragment"
+            app:destination="@id/discountsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_FAQsFragment"
+            app:destination="@id/FAQsFragment" />
+        <action
+            android:id="@+id/action_accountFragment_to_financeFragment"
+            app:destination="@id/financeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.profile.ProfileFragment"
+        android:label="Profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.team.TeamFragment"
+        android:label="TeamFragment" >
+        <action
+            android:id="@+id/action_teamFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactUsFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.contact.ContactUsFragment"
+        android:label="ContactUsFragment" >
+        <action
+            android:id="@+id/action_contactUsFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_contactUsFragment_to_FAQsFragment"
+            app:destination="@id/FAQsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/discountsFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.discount.DiscountsFragment"
+        android:label="DiscountsFragment" >
+        <action
+            android:id="@+id/action_discountsFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+        <action
+            android:id="@+id/action_discountsFragment_to_addDiscountsFragment"
+            app:destination="@id/addDiscountsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/FAQsFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.faq.FAQsFragment"
+        android:label="FAQsFragment" >
+        <action
+            android:id="@+id/action_FAQsFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/financeFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.finance.FinanceFragment"
+        android:label="FinanceFragment" >
+        <action
+            android:id="@+id/action_financeFragment_to_accountFragment"
+            app:destination="@id/accountFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDiscountsFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.discount.AddDiscountsFragment"
+        android:label="AddDiscountsFragment" >
+        <action
+            android:id="@+id/action_addDiscountsFragment_to_discountsFragment"
+            app:destination="@id/discountsFragment" />
+    </fragment>
+</navigation>

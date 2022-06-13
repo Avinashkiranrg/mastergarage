@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/serviceList"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="27dp"
+                android:layout_height="24dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ss1"
+                app:layout_constraintBottom_toBottomOf="@+id/text1"
+                app:layout_constraintEnd_toStartOf="@+id/text1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/text1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:text="@string/periodic_nservice"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/arrowImage1"
+                app:layout_constraintStart_toEndOf="@+id/imageView1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack" />
+
+            <ImageView
+                android:id="@+id/arrowImage1"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/text1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text1" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView1">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="28dp"
+                android:layout_height="26dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ss2"
+                app:layout_constraintBottom_toBottomOf="@+id/text2"
+                app:layout_constraintEnd_toStartOf="@+id/text2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/text2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:text="@string/ac_services_n_repairs"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/arrowImage"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack" />
+
+            <ImageView
+                android:id="@+id/arrowImage"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/text2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="28dp"
+                android:layout_height="31dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ss3"
+                app:layout_constraintBottom_toBottomOf="@+id/text3"
+                app:layout_constraintEnd_toStartOf="@+id/text3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/text3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:text="@string/battery_ncare"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/arrowImage3"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack" />
+
+            <ImageView
+                android:id="@+id/arrowImage3"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/text3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text3"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text3" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView3">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="32dp"
+                android:layout_height="30dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ss4"
+                app:layout_constraintBottom_toBottomOf="@+id/text4"
+                app:layout_constraintEnd_toStartOf="@+id/text4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/text4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:text="@string/wheel_ncare"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/arrowImage4"
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack" />
+
+            <ImageView
+                android:id="@+id/arrowImage4"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/text4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text4"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView4">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ss5"
+                app:layout_constraintBottom_toBottomOf="@+id/text5"
+                app:layout_constraintEnd_toStartOf="@+id/text5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/text5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:text="@string/denting_amp_npainting"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/arrowImage5"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack" />
+
+            <ImageView
+                android:id="@+id/arrowImage5"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/text5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text5"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView6"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView5">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ss6"
+                app:layout_constraintBottom_toBottomOf="@+id/text6"
+                app:layout_constraintEnd_toStartOf="@+id/text6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/text6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:text="@string/mechanical_nrepairs"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/arrowImage6"
+                app:layout_constraintStart_toEndOf="@+id/imageView6"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack" />
+
+            <ImageView
+                android:id="@+id/arrowImage6"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/text6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text6"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView7"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView6">
+
+            <ImageView
+                android:id="@+id/imageView7"
+                android:layout_width="28dp"
+                android:layout_height="29dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ss7"
+                app:layout_constraintBottom_toBottomOf="@+id/text7"
+                app:layout_constraintEnd_toStartOf="@+id/text7"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/text7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:text="@string/car_inspection_namp_diagnostics"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/arrowImage7"
+                app:layout_constraintStart_toEndOf="@+id/imageView7"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack" />
+
+            <ImageView
+                android:id="@+id/arrowImage7"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/text7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text7"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider7"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView8"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView7">
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="32dp"
+                android:layout_height="29dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/ss8"
+                app:layout_constraintBottom_toBottomOf="@+id/text8"
+                app:layout_constraintEnd_toStartOf="@+id/text8"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/text8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:fontFamily="@font/poppins_medium"
+                android:includeFontPadding="false"
+                android:padding="10dp"
+                android:text="@string/road_side_nassistance"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toStartOf="@+id/arrowImage8"
+                app:layout_constraintStart_toEndOf="@+id/imageView8"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack" />
+
+            <ImageView
+                android:id="@+id/arrowImage8"
+                android:layout_width="18dp"
+                android:layout_height="24dp"
+                android:layout_margin="8dp"
+                android:background="@drawable/ic_arrow_right"
+                android:backgroundTint="@color/blue"
+                app:layout_constraintBottom_toBottomOf="@+id/text8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/text8"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider8"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_margin="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text8" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

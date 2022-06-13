@@ -1,0 +1,72 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Mastergarage" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/yellow</item>
+        <item name="colorPrimaryVariant">@color/black</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue</item>
+        <item name="colorSecondaryVariant">@color/black</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="imageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="FilterTheme" parent="Theme.Mastergarage">
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="actionMenuTextColor">@android:color/white</item>
+    </style>
+
+    <style name="Spinner" parent="Base.Widget.AppCompat.Spinner">
+        <item name="android:textColor">@color/editTextBoxColor</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!--    <style name="Rating" parent="Widget.AppCompat.RatingBar.Small">-->
+
+
+    <!--    </style>-->
+    <style name="switchStyle" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/yellow</item>
+        <item name="colorAccent">@color/black</item>    <!-- set your color -->
+    </style>
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/light_color_for_icon</item>
+        <item name="colorControlActivated">@color/blue</item>
+    </style>
+
+    <style name="bottom_navigation_textappreance" parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/poppins_light</item>
+        <item name="android:textSize">@dimen/fifteen_dip_text_size</item>
+    </style>
+
+    <style name="chipFontStyle" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:fontFamily">@font/poppins_light</item>
+    </style>
+
+    <style name="textViewStyle">
+        <item name="android:fontFamily">@font/poppins_light</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="searchStyle">
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+</resources>

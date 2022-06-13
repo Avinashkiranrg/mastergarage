@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/locationChip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:elevation="10dp"
+    android:padding="10dp"
+    android:text="Mumbai"
+    android:textAppearance="@style/chipFontStyle"
+    app:chipBackgroundColor="@color/white"
+    app:chipIcon="@drawable/location"
+    app:chipIconSize="20dp"
+    app:chipIconTint="@color/black"
+    app:closeIcon="@drawable/ic_arrow_down"
+    app:closeIconTint="@color/black"
+    app:closeIconVisible="true" />

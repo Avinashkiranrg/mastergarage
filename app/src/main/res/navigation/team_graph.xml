@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/profile_graph"
+    app:startDestination="@id/serviceAdvisorFragment">
+
+
+    <fragment
+        android:id="@+id/driverFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.team.DriverFragment"
+        android:label="Driver"
+        tools:layout="@layout/fragment_driver">
+        <action
+            android:id="@+id/action_driverFragment_to_serviceAdvisorFragment"
+            app:destination="@id/serviceAdvisorFragment"
+            app:popUpTo="@+id/driverFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/serviceAdvisorFragment"
+        android:name="com.vendor.mastergarage.ui.outerui.fragment_main.account.all.team.ServiceAdvisorFragment"
+        android:label="Service advisor"
+        tools:layout="@layout/fragment_service_advisor">
+        <action
+            android:id="@+id/action_serviceAdvisorFragment_to_driverFragment"
+            app:destination="@id/driverFragment"
+            app:popUpTo="@+id/serviceAdvisorFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+</navigation>

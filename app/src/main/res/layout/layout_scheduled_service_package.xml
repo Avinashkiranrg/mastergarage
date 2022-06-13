@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/schedueText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Scheduled Service Packages"
+        android:textColor="@color/black"
+        android:textSize="@dimen/fifteen_dip_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardElevation="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/schedueText">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/yellow"
+                android:fontFamily="@font/opensans_semibold"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:visibility="gone"
+                android:text="Highest Selling"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/ten_dip_text_size"
+                app:layout_constraintStart_toStartOf="@+id/switch1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switch1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="8dp"
+                android:checked="true"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Basic Service"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/fifteen_dip_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:thumbTint="@drawable/newthumb"
+                app:trackTint="@drawable/newtrack"
+                app:useMaterialThemeColors="false" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:padding="4dp"
+                android:drawableStart="@drawable/technical_small"
+                android:text="Every 5000 Kms or 3 months"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve_dip_text_size"
+                app:layout_constraintStart_toStartOf="@+id/switch1"
+                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:padding="4dp"
+                android:drawableStart="@drawable/checklist_small"
+                android:text="9 Points Service"
+                android:textColor="@color/black"
+                android:textSize="@dimen/twelve_dip_text_size"
+                app:layout_constraintStart_toStartOf="@+id/materialTextView7"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView7" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/materialTextView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_regular"
+                android:includeFontPadding="false"
+                android:padding="4dp"
+                android:text="@string/show_more"
+                android:textColor="@color/light_color_"
+                android:textSize="@dimen/nine_dip_text_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/materialTextView8"
+                app:layout_constraintTop_toBottomOf="@+id/materialTextView8" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/selectCarBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Select Car"
+                android:textAllCaps="true"
+                android:textColor="@color/blue"
+                android:textSize="@dimen/twelve_dip_text_size"
+                app:cornerRadius="20dp"
+                app:elevation="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

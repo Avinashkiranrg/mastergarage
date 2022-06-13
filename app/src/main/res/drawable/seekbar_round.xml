@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?><!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <item android:id="@android:id/background">-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <corners android:radius="10dp" />-->
+<!--            <solid android:color="@color/light_text_color" />-->
+<!--        </shape>-->
+<!--    </item>-->
+<!--    <item android:id="@android:id/progress">-->
+<!--        <clip>-->
+<!--            <shape android:shape="rectangle">-->
+<!--                <corners android:radius="90dp" />-->
+<!--                <solid android:color="@color/fuel_green" />-->
+<!--            </shape>-->
+<!--        </clip>-->
+<!--    </item>-->
+<!--</selector>-->
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@android:id/background"
+        android:height="8dp">
+        <shape android:shape="rectangle">
+            <corners android:radius="90dp" />
+            <solid android:color="@color/light_text_color" />
+        </shape>
+    </item>
+
+    <item
+        android:id="@android:id/progress"
+        android:height="8dp">
+        <clip>
+            <shape android:shape="rectangle">
+                <corners android:radius="90dp" />
+                <solid android:color="@color/fuel_green" />
+            </shape>
+        </clip>
+    </item>
+
+</layer-list>
+
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--    <item android:id="@android:id/background">-->
+<!--        <shape android:shape="rectangle">-->
+<!--            <corners android:radius="5dp" />-->
+
+<!--            <gradient-->
+<!--                android:angle="270"-->
+<!--                android:endColor="@color/blue"-->
+<!--                android:startColor="@color/blue2" />-->
+<!--        </shape>-->
+<!--    </item>-->
+<!--    <item android:id="@android:id/secondaryProgress">-->
+<!--        <clip>-->
+<!--            <shape android:shape="oval">-->
+<!--                <corners android:radius="5dp" />-->
+<!--                <gradient-->
+<!--                    android:angle="270"-->
+<!--                    android:endColor="@color/blue"-->
+<!--                    android:startColor="@color/blue" />-->
+<!--            </shape>-->
+<!--        </clip>-->
+<!--    </item>-->
+<!--    <item android:id="@android:id/progress">-->
+<!--        <clip>-->
+<!--            <shape android:shape="rectangle">-->
+<!--                <corners android:radius="90dp" />-->
+
+<!--                <gradient-->
+<!--                    android:angle="90"-->
+<!--                    android:endColor="@color/colorPrimaryDark"-->
+<!--                    android:startColor="@color/colorPrimary" />-->
+<!--            </shape>-->
+<!--        </clip>-->
+<!--    </item>-->
+<!--</layer-list>-->
