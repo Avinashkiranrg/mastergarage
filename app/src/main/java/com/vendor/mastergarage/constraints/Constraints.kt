@@ -36,6 +36,7 @@ class Constraints {
 
         const val TRUE_INT: Int = 1
         const val FALSE_INT: Int = 0
+        const val TRUE_STRING : String = "success"
 
         const val ACCEPT_REQUEST: Int = 1
         const val CHOOSE_SERVICE_ADVISOR: Int = 2

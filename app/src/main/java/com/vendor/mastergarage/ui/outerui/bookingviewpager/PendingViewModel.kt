@@ -25,6 +25,11 @@ class PendingViewModel @Inject constructor(
     val leads: LiveData<Response<Leads>>
         get() = leadsLiveData
 
+    private val pendingLiveData = MutableLiveData<Response<OnGoingRespo>>()
+
+    val pendingData: LiveData<Response<OnGoingRespo>>
+        get() = pendingLiveData
+
     private val addLiveString = MutableLiveData<Response<UpdateStatus>>()
 
     val liveData: LiveData<Response<UpdateStatus>>
@@ -66,6 +71,23 @@ class PendingViewModel @Inject constructor(
         }
     }
 
+    private fun getPending(vendorId: String,action:String) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            if (isInternetAvailable(context)) {
+                pendingLiveData.postValue(Response.Loading())
+                val result = repository.getPendingData(vendorId,action)
+                if (result.body() != null) {
+                    pendingLiveData.postValue(Response.Success(result.body()))
+                } else {
+                    pendingLiveData.postValue(Response.Failure("api error"))
+                }
+            } else {
+                pendingLiveData.postValue(Response.Failure("No network"))
+            }
+        } catch (e: Exception) {
+            pendingLiveData.postValue(Response.Failure(e.message.toString()))
+        }
+    }
     fun setOnGoing(
         last_up_date: String,
         last_up_time: String,
@@ -124,7 +146,11 @@ class PendingViewModel @Inject constructor(
             }
         }
 
-    fun loadUi() {
+   /* fun loadUi() {
         getStoredOutletObject()?.let { it.outletId?.let { it1 -> getLeads(it1) } }
+    }*/
+
+    fun loadUi(vendorId: String, s: String) {
+        getPending(vendorId,s)
     }
 }

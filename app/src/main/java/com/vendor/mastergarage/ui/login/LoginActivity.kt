@@ -10,18 +10,20 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.google.firebase.FirebaseException
 import com.google.firebase.FirebaseTooManyRequestsException
 import com.google.firebase.auth.*
-import com.vendor.mastergarage.R
+import com.vendor.mastergarage.constraints.Constraints.Companion.TRUE_STRING
 import com.vendor.mastergarage.databinding.ActivityLoginBinding
 import com.vendor.mastergarage.datastore.VendorPreference
 import com.vendor.mastergarage.di.AppModule.Companion.FLAG_URL
+import com.vendor.mastergarage.networkcall.Response
+import com.vendor.mastergarage.ui.mainactivity.MainActivity
 import com.vendor.mastergarage.ui.search.SearchOutletsActivity
+import com.vendor.mastergarage.utlis.goToActivitiesFinish
 import com.vendor.mastergarage.utlis.loadSvg
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -33,12 +35,14 @@ class LoginActivity : AppCompatActivity() {
 
     //    private val loginViewModel: LoginViewModel by viewModels()
     lateinit var binding: ActivityLoginBinding
-    private val viewModel by viewModels<LoginViewModel>()
+    private val viewModel: LoginViewModel by viewModels()
     var mAuth: FirebaseAuth? = null
     private var storedVerificationId: String? = null
 
-    //    private lateinit var callbacks: PhoneAuthProvider.OnVerificationStateChangedCallbacks
     var countryCode: String? = null
+    val vendorId: String? = null
+
+    var isLogin : Boolean? = false
 
     @Inject
     lateinit var vendorPreference: VendorPreference
@@ -48,55 +52,40 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        mAuth = FirebaseAuth.getInstance()
+        binding.contineBtm.setOnClickListener {
 
-        binding.submit.setOnClickListener {
-            if (!binding.otpText.text.isNullOrEmpty()) {
-                showToast("Verifying...", this@LoginActivity)
-                val credential = PhoneAuthProvider.getCredential(
-                    // storedVerificationId!!,
-                    "1234",
-                    binding.otpText.text.toString()
-                )
-                signInWithPhoneAuthCredential(credential)
+            if (binding.edPhoneNo.text.toString().equals("")) {
+                showToast("Please Enter the Phone Number", this)
+                return@setOnClickListener
             } else {
-                showToast("Enter OTP", this)
+                viewModel.signUp(
+                    binding.edPhoneNo.text.toString()
+                )
             }
         }
-        binding.getOTP.setOnClickListener {
-            sendData()
-        }
 
-
-//        callbacks = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//
-//            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
-//                signInWithPhoneAuthCredential(credential)
-//            }
-//
-//            override fun onVerificationFailed(e: FirebaseException) {
-//
-//                if (e is FirebaseAuthInvalidCredentialsException) {
-//                    // Invalid request
-//                    showToast("FirebaseAuth Invalid Credentials Exception", this@LoginActivity)
-//                } else if (e is FirebaseTooManyRequestsException) {
-//                    // The SMS quota for the project has been exceeded
-//                    showToast("SMS quota is full", this@LoginActivity)
-//                }
-//
-//                // Show a message and update the UI
-//            }
-//
-//            override fun onCodeSent(
-//                verificationId: String,
-//                token: PhoneAuthProvider.ForceResendingToken
-//            ) {
-//                showToast("Sent", this@LoginActivity)
-//                binding.otpText.requestFocus()
-//                storedVerificationId = verificationId
-//                binding.otpText.isCursorVisible = true
-//            }
-//        }
+        viewModel.signUpData.observe(this, Observer {
+            when (it) {
+                is Response.Success -> {
+                    val userItem = it.data
+                    if (userItem != null) {
+                        showToast(userItem.message, this)
+                        if (userItem.success == TRUE_STRING) {
+                            val intent = Intent(this, OtpActivity::class.java)
+                            intent.putExtra("phone", binding.edPhoneNo.text.toString().trim())
+                            intent.putExtra("venderId", it.data.vendorId)
+                            startActivity(intent)
+                        }
+//                        userItem.message?.let { it1 -> showToast(it1, this) }*/
+                    }
+                }
+                is Response.Failure -> {
+                    Toast.makeText(this, it.errorMessage, Toast.LENGTH_SHORT)
+                        .show()
+                    Log.e(TAG, it.errorMessage.toString())
+                }
+            }
+        })
 
         binding.countryFlag.setOnClickListener {
             intentLauncher.launch(Intent(this, CountryListActivity::class.java))
@@ -105,13 +94,12 @@ class LoginActivity : AppCompatActivity() {
         vendorPreference.getCountryFlag.asLiveData().observe(this, {
             binding.countryFlag.loadSvg(it)
         })
-        vendorPreference.getCountryName.asLiveData().observe(this, Observer {
-            binding.phoneNo.hint = it
-        })
+        /*   vendorPreference.getCountryName.asLiveData().observe(this, Observer {
+               binding.edPhoneNo.hint = it
+           })*/
         vendorPreference.getCountryCode.asLiveData().observe(this, Observer {
             countryCode = it
         })
-
 
     }
 
@@ -140,7 +128,7 @@ class LoginActivity : AppCompatActivity() {
         ) {
 //            showToast("Sent", this@LoginActivity)
             Toast.makeText(this@LoginActivity, "Sent", Toast.LENGTH_SHORT).show()
-            binding.otpText.requestFocus()
+            //  binding.otpText.requestFocus()
             storedVerificationId = verificationId
 //            binding.otpText.isCursorVisible = true
         }
@@ -157,16 +145,16 @@ class LoginActivity : AppCompatActivity() {
                     "${FLAG_URL}${code}.svg"
                 binding.countryFlag.loadSvg(imageUri)
 
-                binding.phoneNo.hint = "$name (+${dialCode})"
-                if (dialCode != null) {
-                    countryCode = dialCode
-                }
+                //   binding.phoneNo.hint = "$name (+${dialCode})"
+                /* if (dialCode != null) {
+                     countryCode = dialCode
+                 }*/
             }
         }
 
     private fun sendData() {
         when {
-            binding.phoneNo.text.isNullOrEmpty() -> {
+            binding.edPhoneNo.text.isNullOrEmpty() -> {
 
                 showToast("Enter Phone number", this)
             }
@@ -181,11 +169,11 @@ class LoginActivity : AppCompatActivity() {
                     "Please wait",
                     this
                 )
-                setEnabledButton()
-                sendVerificationCode(binding.phoneNo.text.toString())
+                //       setEnabledButton()
+                sendVerificationCode(binding.edPhoneNo.text.toString())
                 Handler(Looper.getMainLooper()).postDelayed(
                     {
-                        setEnabledButtonTrue()
+                        //          setEnabledButtonTrue()
                     },
                     5000
                 )
@@ -194,25 +182,25 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-    private fun setEnabledButtonTrue() {
-        binding.getOTP.isEnabled = true
-        binding.getOTP.setTextColor(
-            ContextCompat.getColorStateList(
-                applicationContext,
-                R.color.get_OtpColor
-            )
-        )
-    }
+    /* private fun setEnabledButtonTrue() {
+         binding.getOTP.isEnabled = true
+         binding.getOTP.setTextColor(
+             ContextCompat.getColorStateList(
+                 applicationContext,
+                 R.color.get_OtpColor
+             )
+         )
+     }
 
-    private fun setEnabledButton() {
-        binding.getOTP.isEnabled = false
-        binding.getOTP.setTextColor(
-            ContextCompat.getColorStateList(
-                applicationContext,
-                R.color.gray
-            )
-        )
-    }
+     private fun setEnabledButton() {
+         binding.getOTP.isEnabled = false
+         binding.getOTP.setTextColor(
+             ContextCompat.getColorStateList(
+                 applicationContext,
+                 R.color.gray
+             )
+         )
+     }*/
 
     private fun sendVerificationCode(phoneNo: String) {
         val options = PhoneAuthOptions.newBuilder(mAuth!!)
@@ -227,7 +215,7 @@ class LoginActivity : AppCompatActivity() {
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
 
-    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+    /*private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         mAuth?.signInWithCredential(credential)
             ?.addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
@@ -249,13 +237,14 @@ class LoginActivity : AppCompatActivity() {
                 }
             }
 
-    }
+    }*/
 
-    private fun saveData(user: FirebaseUser?) {
+/*
+    private fun saveData(user: String) {
         lifecycleScope.launch {
             if (user != null) {
-                vendorPreference.setVid(user.uid)
-                vendorPreference.setVendorPhone(user.phoneNumber.toString())
+                //vendorPreference.setVid(user.uid)
+                vendorPreference.setVendorPhone(binding.edPhoneNo.text.toString())
                 val intent = Intent(this@LoginActivity, SearchOutletsActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -264,6 +253,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+*/
 
     companion object {
         fun showToast(str: String, context: Context) =
@@ -278,6 +268,16 @@ class LoginActivity : AppCompatActivity() {
             val intent = Intent(this, SearchOutletsActivity::class.java)
             startActivity(intent)
             finish()
+        }else{
+
+            vendorPreference.getVendorLogin.asLiveData().observe(this,{
+                isLogin = it
+                if(isLogin!!){
+                    goToActivitiesFinish(this,MainActivity::class.java)
+                    Log.e("AlreadyLogin","$isLogin")
+
+                }
+            })
         }
     }
 }

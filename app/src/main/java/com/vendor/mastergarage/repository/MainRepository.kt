@@ -8,7 +8,6 @@ import com.vendor.mastergarage.model.Vendors
 import com.vendor.mastergarage.networkcall.ApiInterface
 import com.vendor.mastergarage.networkcall.CityInterface
 import com.vendor.mastergarage.networkcall.CountryInterface
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import javax.inject.Inject
@@ -19,6 +18,18 @@ class MainRepository @Inject constructor(
     private val countryInterface: CountryInterface
 ) :
     BaseRepository() {
+
+    suspend fun signUp(mobileNumber: String) = apiInterface.signUp(mobileNumber,"signin")
+
+    suspend fun verifyOtp(mobileNumber: String,verifyOtp: String) = apiInterface.verifyOtp(mobileNumber,verifyOtp,"otpVerified")
+
+    suspend fun dashBoardData(vendorId: String) = apiInterface.dashBoardData("2")
+
+    suspend fun getOnGoingData(vendorId: String,action : String) = apiInterface.onGoingData("2",action)
+
+    suspend fun getPendingData(vendorId: String,action : String) = apiInterface.onGoingData("2",action)
+
+    suspend fun getDeliveredData(vendorId: String,action : String) = apiInterface.onGoingData("2",action)
 
     suspend fun getVendor(phone: String) = apiInterface.getVendorData(phone)
 

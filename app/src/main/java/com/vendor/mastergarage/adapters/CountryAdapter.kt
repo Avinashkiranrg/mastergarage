@@ -13,7 +13,6 @@ import com.vendor.mastergarage.model.CountryCodeItem
 import com.vendor.mastergarage.utlis.loadSvg
 import java.lang.ref.WeakReference
 
-
 class CountryAdapter(
     private var list: List<CountryCodeItem>,
     private val callback: WeakReference<OnItemClickListener>

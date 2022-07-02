@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vendor.mastergarage.databinding.LayoutDeliveredBinding
 import com.vendor.mastergarage.model.OnDeliveredItem
+import com.vendor.mastergarage.model.ResultOnGoing
 import com.vendor.mastergarage.utlis.assetsToBitmapModel
 import com.vendor.mastergarage.utlis.calculateMoney
 
 
 class OnDeliveredAdapter(
     private val context: Context,
-    private var list: List<OnDeliveredItem>,
+    private var list: List<ResultOnGoing>,
     private val onItemClickListener: OnItemClickListener
 ) :
     RecyclerView.Adapter<OnDeliveredAdapter.MyViewHolder>() {
@@ -37,10 +38,10 @@ class OnDeliveredAdapter(
     @SuppressLint("SetTextI18n", "HardwareIds")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val leadItem = list[position]
-        holder.itemBinding.carName.text = "${leadItem.manufacturerName} ${leadItem.model}"
+        holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-        holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+    /*    holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
 
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
@@ -55,7 +56,7 @@ class OnDeliveredAdapter(
         bitmap?.apply {
             holder.itemBinding.imageView.setImageBitmap(this)
         }
-
+*/
 
 //        if (leadItem.vImageUri != null) {
 //            try {
@@ -66,12 +67,12 @@ class OnDeliveredAdapter(
 //                Log.e("GlideException", "GlideException")
 //            }
 //        }
-        holder.itemBinding.root.setOnClickListener {
+     /*   holder.itemBinding.root.setOnClickListener {
             onItemClickListener.onItemClick(leadItem)
         }
 
         if (leadItem.rate != null)
-            holder.itemBinding.ratingBar.rating = leadItem.rate
+            holder.itemBinding.ratingBar.rating = leadItem.rate*/
 
     }
 

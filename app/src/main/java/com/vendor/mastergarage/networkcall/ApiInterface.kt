@@ -4,9 +4,39 @@ import com.example.uidesign.model.Discounts
 import com.vendor.mastergarage.model.*
 import retrofit2.Response
 import retrofit2.http.*
+import java.net.ResponseCache
 
 
 interface ApiInterface {
+
+    @FormUrlEncoded
+    @POST("signin.php")
+    suspend fun signUp (
+        @Field("mobileNumber") mobileNumber: String,
+        @Field("action") action: String
+    ) : Response<SignUpRespon>
+
+    @FormUrlEncoded
+    @POST("signin.php")
+    suspend fun verifyOtp (
+        @Field("mobileNumber") mobileNumber: String,
+        @Field("otpCode") otpCode: String,
+        @Field("action") action: String
+    ) : Response<VerifyOtpRespon>
+
+
+    @GET("getoutlet-counts.php?")
+    suspend fun dashBoardData (
+        @Query("vendorId") vendorId: String
+    ) : Response<DashBoardRespon>
+
+
+    @GET("getAllLeads.php?")
+    suspend fun onGoingData (
+        @Query("vendorId") vendorId: String,
+        @Query("action") action: String
+    ) : Response<OnGoingRespo>
+
 
     @GET("getVendor.php")
     suspend fun getVendorData(@Query("phone") phone: String): Response<Vendors>

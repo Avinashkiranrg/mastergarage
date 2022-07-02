@@ -20,15 +20,16 @@ class VendorPreference @Inject constructor(@ApplicationContext context: Context)
     companion object {
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "vendorPrefs")
         private val tokenId = stringPreferencesKey("tokenId")
-        private val vid = stringPreferencesKey("vid")
         private val vendor_name = stringPreferencesKey("vendor_name")
         private val vendor_email = stringPreferencesKey("vendor_email")
         private val vendor_phone = stringPreferencesKey("vendor_phone")
+        private val vendor_id = stringPreferencesKey("vid")
         private val city = stringPreferencesKey("city")
         private val state = stringPreferencesKey("state")
         private val countryFlag = stringPreferencesKey("countryFlag")
         private val countryCode = stringPreferencesKey("countryCode")
         private val countryName = stringPreferencesKey("countryName")
+        private val isVendorlogin = booleanPreferencesKey("isVendorlogin")
 
         private val alertReminders = booleanPreferencesKey("alertReminders")
         private val notifyMeOffers = booleanPreferencesKey("notifyMeOffers")
@@ -37,6 +38,15 @@ class VendorPreference @Inject constructor(@ApplicationContext context: Context)
         private val rating = booleanPreferencesKey("rating")
         private val updates = booleanPreferencesKey("updates")
 
+    }
+
+    val getVendorLogin: Flow<Boolean>
+    get() = appContext.dataStore.data.map {
+        it[isVendorlogin] ?: false
+    }
+
+    suspend fun setVendorLogin(value: Boolean){
+        appContext.dataStore.edit { it[isVendorlogin] = value }
     }
 
     val getTokenId: Flow<String>
@@ -48,13 +58,13 @@ class VendorPreference @Inject constructor(@ApplicationContext context: Context)
         appContext.dataStore.edit { it[tokenId] = value }
     }
 
-    val getVid: Flow<String>
+    val getVendorId: Flow<String>
         get() = appContext.dataStore.data.map {
-            it[vid] ?: ""
+            it[vendor_id] ?: ""
         }
 
-    suspend fun setVid(value: String) {
-        appContext.dataStore.edit { it[vid] = value }
+    suspend fun setVendorId(value: String) {
+        appContext.dataStore.edit { it[vendor_id] = value }
     }
 
     val getVendorName: Flow<String>

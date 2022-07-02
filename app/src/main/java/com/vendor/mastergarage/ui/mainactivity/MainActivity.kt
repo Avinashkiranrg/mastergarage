@@ -45,6 +45,8 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavigationView, navController)
 
 
+
+
 //        vendorPreference.getVid.asLiveData().observe(this, {
 //            Log.e("UId", it.toString())
 //            Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()

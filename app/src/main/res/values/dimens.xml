@@ -27,6 +27,7 @@
     <dimen name="eighteen_dip_text_size">15sp</dimen>
     <dimen name="fifteen_dip_text_size">13sp</dimen>
     <dimen name="fourteen_dip_text_size">12sp</dimen>
+    <dimen name="eleven_dip_text_size">11sp</dimen>
     <dimen name="twelve_dip_text_size">10sp</dimen>
     <dimen name="ten_dip_text_size">9sp</dimen>
     <dimen name="nine_dip_text_size">8sp</dimen>

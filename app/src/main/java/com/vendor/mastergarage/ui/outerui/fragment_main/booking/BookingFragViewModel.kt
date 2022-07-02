@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.vendor.mastergarage.model.DashBoardRespon
 import com.vendor.mastergarage.model.OutletsItem
 import com.vendor.mastergarage.model.TotalRequests
 import com.vendor.mastergarage.model.Vendors
@@ -40,6 +41,11 @@ class BookingFragViewModel @Inject constructor(
         getStoredOutletObject()?.outletId?.let { getCounts(it) }
     }
 
+    private val dashBoardData = MutableLiveData<Response<DashBoardRespon>>()
+
+    val dashLiveData : LiveData<Response<DashBoardRespon>>
+    get() = dashBoardData
+
     fun getVendor(phone: String) = viewModelScope.launch(Dispatchers.IO) {
         try {
             if (NetworkUtil.isInternetAvailable(context)) {
@@ -73,6 +79,24 @@ class BookingFragViewModel @Inject constructor(
             }
         } catch (e: Exception) {
             allRequest.postValue(Response.Failure(e.message.toString()))
+        }
+    }
+
+    fun getDashBoardData (vendorId: String) = viewModelScope.launch(Dispatchers.IO){
+
+        try {
+            if (NetworkUtil.isInternetAvailable(context)) {
+                val result = repository.dashBoardData(vendorId)
+                if (result.body() != null) {
+                    dashBoardData.postValue(Response.Success(result.body()))
+                } else {
+                    dashBoardData.postValue(Response.Failure("api error"))
+                }
+            } else {
+                dashBoardData.postValue(Response.Failure("No network"))
+            }
+        } catch (e: Exception) {
+            dashBoardData.postValue(Response.Failure(e.message.toString()))
         }
     }
 

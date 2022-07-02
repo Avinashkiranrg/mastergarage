@@ -141,6 +141,19 @@ fun getDateData(toString: String): Date {
     return date
 }
 
+fun Context.goToActivityFinish(activity: Activity, javaClass: Class<*>?) {
+    val intent = Intent(activity, javaClass)
+    startActivity(intent)
+    activity.finish()
+}
+
+fun Context.goToActivitiesFinish(activity: Activity, javaClass: Class<*>?) {
+    val intent = Intent(activity, javaClass)
+    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+    startActivity(intent)
+    activity.finish()
+}
+
 fun getOnlyDate(toString: String): Date {
     val _myFormat = "dd/MM/yyyy" // mention the format you need
     val _sdf = SimpleDateFormat(_myFormat, Locale.getDefault())

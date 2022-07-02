@@ -48,11 +48,11 @@
 
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/notification"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:elevation="10dp"
-                android:id="@+id/notification"
                 android:padding="10dp"
                 app:chipBackgroundColor="@color/white"
                 app:chipEndPadding="4dp"
@@ -131,8 +131,8 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -204,12 +204,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                            <ImageView
+                            <org.eazegraph.lib.charts.PieChart
                                 android:id="@+id/charts"
-                                android:layout_width="91dp"
-                                android:layout_height="91dp"
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
                                 android:layout_margin="16dp"
-                                android:background="@drawable/chart"
+                                android:visibility="visible"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toStartOf="@+id/constraintLayout5"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -217,8 +217,8 @@
 
                             <ImageView
                                 android:id="@+id/logo2"
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
                                 android:layout_margin="16dp"
                                 android:background="@drawable/logo"
                                 android:backgroundTint="@color/light_text_color"
@@ -231,8 +231,8 @@
                                 android:id="@+id/constraintLayout5"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:paddingStart="16dp"
-                                android:paddingEnd="16dp"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintStart_toEndOf="@+id/charts"
@@ -247,36 +247,68 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent">
 
-                                    <com.google.android.material.textview.MaterialTextView
-                                        android:id="@+id/bookingCountOngoing"
-                                        android:layout_width="wrap_content"
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:drawableStart="@drawable/ic_yellow_circle"
-                                        android:drawablePadding="10dp"
-                                        android:fontFamily="@font/opensans_bold"
-                                        android:text="25 Bookings"
-                                        android:textColor="@color/notification_text_color"
-                                        android:textSize="@dimen/twelve_dip_text_size"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintEnd_toStartOf="@+id/bookingOngoingStatus"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <com.google.android.material.textview.MaterialTextView
-                                        android:id="@+id/bookingOngoingStatus"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:gravity="end"
-                                        android:text="Ongoing"
-                                        android:textColor="@color/yellow"
-                                        android:textSize="@dimen/ten_dip_text_size"
-                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:orientation="horizontal"
                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintStart_toEndOf="@+id/bookingCountOngoing"
-                                        app:layout_constraintTop_toTopOf="parent" />
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        android:weightSum="10"
+                                        tools:ignore="MissingConstraints">
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/bookingCountOngoing"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="5dp"
+                                            android:layout_weight="2.5"
+                                            android:drawableStart="@drawable/ic_yellow_circle"
+                                            android:drawablePadding="10dp"
+                                            android:fontFamily="@font/opensans_bold"
+                                            android:gravity="center"
+                                            android:text="0"
+
+                                            android:textColor="@color/notification_text_color"
+                                            android:textSize="@dimen/fifteen_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toStartOf="@+id/bookingOngoingStatus"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="4"
+                                            android:fontFamily="@font/opensans_bold"
+                                            android:text="Booking"
+                                            android:gravity="start"
+                                            android:textColor="@color/notification_text_color"
+                                            android:textSize="@dimen/fifteen_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
 
 
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/bookingOngoingStatus"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3.5"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:gravity="start"
+                                            android:paddingEnd="20dp"
+                                            android:text="Ongoing"
+                                            android:textColor="@color/yellow"
+                                            android:textSize="@dimen/eleven_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/bookingCount"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                                    </LinearLayout>
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -288,34 +320,67 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
-                                    <com.google.android.material.textview.MaterialTextView
-                                        android:id="@+id/bookingCountPending"
-                                        android:layout_width="wrap_content"
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:drawableStart="@drawable/ic_red_circle"
-                                        android:drawablePadding="10dp"
-                                        android:fontFamily="@font/opensans_bold"
-                                        android:text="25 bookings"
-                                        android:textColor="@color/notification_text_color"
-                                        android:textSize="@dimen/twelve_dip_text_size"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintEnd_toStartOf="@+id/bookingStatusPending"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <com.google.android.material.textview.MaterialTextView
-                                        android:id="@+id/bookingStatusPending"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:gravity="end"
-                                        android:text="Pending"
-                                        android:textColor="@color/red"
-                                        android:textSize="@dimen/ten_dip_text_size"
-                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:orientation="horizontal"
                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintStart_toEndOf="@+id/bookingCountPending"
-                                        app:layout_constraintTop_toTopOf="parent" />
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        android:weightSum="10"
+                                        tools:ignore="MissingConstraints">
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/bookingPendingCount"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="5dp"
+                                            android:layout_weight="2.5"
+                                            android:drawableStart="@drawable/ic_red_circle"
+                                            android:drawablePadding="10dp"
+                                            android:fontFamily="@font/opensans_bold"
+                                            android:gravity="center"
+                                            android:text=""
+                                            android:textColor="@color/notification_text_color"
+                                            android:textSize="@dimen/fifteen_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toStartOf="@+id/bookingOngoingStatus"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="4"
+                                            android:fontFamily="@font/opensans_bold"
+                                            android:text="Booking"
+                                            android:textColor="@color/notification_text_color"
+                                            android:textSize="@dimen/fifteen_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/bookingPendingStatus"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3.5"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:gravity="start"
+                                            android:paddingEnd="20dp"
+                                            android:text="Pending"
+                                            android:textColor="@color/red"
+                                            android:textSize="@dimen/eleven_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/bookingCount"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                                    </LinearLayout>
+
 
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -328,45 +393,72 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
-                                    <com.google.android.material.textview.MaterialTextView
-                                        android:id="@+id/bookingCountDelivered"
-                                        android:layout_width="wrap_content"
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:drawableStart="@drawable/ic_green_circle"
-                                        android:drawablePadding="10dp"
-                                        android:fontFamily="@font/opensans_bold"
-                                        android:text="25 bookings"
-                                        android:textColor="@color/notification_text_color"
-                                        android:textSize="@dimen/twelve_dip_text_size"
-                                        app:layout_constraintBottom_toBottomOf="parent"
-                                        app:layout_constraintEnd_toStartOf="@+id/bookingStatusDelivered"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <com.google.android.material.textview.MaterialTextView
-                                        android:id="@+id/bookingStatusDelivered"
-                                        android:layout_width="0dp"
-                                        android:layout_height="wrap_content"
-                                        android:fontFamily="@font/poppins_regular"
-                                        android:gravity="end"
-                                        android:text="Delivered"
-                                        android:textColor="@color/green2"
-                                        android:textSize="@dimen/ten_dip_text_size"
-                                        app:layout_constraintBottom_toBottomOf="parent"
+                                        android:orientation="horizontal"
+                                        android:weightSum="10"
                                         app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintStart_toEndOf="@+id/bookingCountDelivered"
-                                        app:layout_constraintTop_toTopOf="parent" />
+                                        app:layout_constraintStart_toStartOf="parent"
+                                        app:layout_constraintTop_toTopOf="parent"
+                                        tools:ignore="MissingConstraints">
 
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/bookingDeliveredCount"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginRight="5dp"
+                                            android:layout_weight="2.5"
+                                            android:drawableStart="@drawable/ic_green_circle"
+                                            android:drawablePadding="10dp"
+                                            android:fontFamily="@font/opensans_bold"
+                                            android:gravity="center"
+                                            android:text=""
+                                            android:textColor="@color/notification_text_color"
+                                            android:textSize="@dimen/fifteen_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toStartOf="@+id/bookingOngoingStatus"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="4"
+                                            android:fontFamily="@font/opensans_bold"
+                                            android:text="Booking"
+                                            android:textColor="@color/notification_text_color"
+                                            android:textSize="@dimen/fifteen_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+
+                                        <com.google.android.material.textview.MaterialTextView
+                                            android:id="@+id/bookingdeliverdStatus"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="3.5"
+                                            android:fontFamily="@font/poppins_regular"
+                                            android:gravity="start"
+                                            android:paddingEnd="20dp"
+                                            android:text="Delivered"
+                                            android:textColor="@color/green2"
+                                            android:textSize="@dimen/eleven_dip_text_size"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintStart_toEndOf="@+id/bookingCount"
+                                            app:layout_constraintTop_toTopOf="parent" />
+
+                                    </LinearLayout>
                                 </androidx.constraintlayout.widget.ConstraintLayout>
-
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
-
             </LinearLayout>
-
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
@@ -396,9 +488,5 @@
                 app:layout_constraintTop_toBottomOf="@+id/tabLayout" />
 
         </LinearLayout>
-
-
     </androidx.core.widget.NestedScrollView>
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

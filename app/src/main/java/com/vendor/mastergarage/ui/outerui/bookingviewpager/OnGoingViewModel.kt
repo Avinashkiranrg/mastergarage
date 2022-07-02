@@ -1,6 +1,7 @@
 package com.vendor.mastergarage.ui.outerui.bookingviewpager
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -21,24 +22,24 @@ class OnGoingViewModel @Inject constructor(
     private val repository: MainRepository
 ) : BaseViewModel(application) {
 
-    private val ongoingLiveData = MutableLiveData<Response<OnGoingData>>()
+    private val ongoingLiveData = MutableLiveData<Response<OnGoingRespo>>()
 
-    val onGoing: LiveData<Response<OnGoingData>>
+    val onGoing: LiveData<Response<OnGoingRespo>>
         get() = ongoingLiveData
 
     private fun getStoredOutletObject(): OutletsItem? {
         return repository.getStoredOutletObject()
     }
+//
+//    init {
+//        getStoredOutletObject()?.let { it.outletId?.let { it1 -> onGoingData(it1) } }
+//    }
 
-    init {
-        getStoredOutletObject()?.let { it.outletId?.let { it1 -> getOnGoing(it1) } }
-    }
-
-    private fun getOnGoing(outletId: Int) = viewModelScope.launch(Dispatchers.IO) {
+    private fun onGoingData(vendorId: String,action: String) = viewModelScope.launch(Dispatchers.IO) {
         try {
             if (NetworkUtil.isInternetAvailable(context)) {
                 ongoingLiveData.postValue(Response.Loading())
-                val result = repository.getOnGoing(outletId)
+                val result = repository.getOnGoingData(vendorId,action)
                 if (result.body() != null) {
                     ongoingLiveData.postValue(Response.Success(result.body()))
                 } else {
@@ -52,9 +53,7 @@ class OnGoingViewModel @Inject constructor(
         }
     }
 
-
-
-    fun loadUi() {
-        getStoredOutletObject()?.let { it.outletId?.let { it1 -> getOnGoing(it1) } }
+    fun loadUi(vendorId: String, s: String) {
+      onGoingData(vendorId,s)
     }
 }

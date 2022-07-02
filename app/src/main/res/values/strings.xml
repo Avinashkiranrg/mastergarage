@@ -11,8 +11,9 @@
     <string name="new_car_dealer">New Car Dealer</string>
     <string name="get_otp"><u>Get OTP</u></string>
     <string name="viewDet"><u>View Details</u></string>
-    <string name="india_91">INDIA (+91)</string>
+    <string name="india_91">Phone Number</string>
     <string name="enter_otp">ENTER OTP</string>
+    <string name="enter_otp_here">Enter Otp Here</string>
     <string name="login_as">Login as</string>
     <string name="login">Login</string>
     <string name="welcome_partners">Welcome Partners</string>
@@ -89,6 +90,8 @@
     <string name="master_garage">Master Garage</string>
     <string name="write_a_review">Write a review</string>
     <string name="appointment_date_amp_time"><![CDATA[Appointment Date & Time]]></string>
+    <string name="otp_tag"> By Clicking, I accept the Terms &amp; Conditions &amp; Privacy Policy</string>
+    <string name="changenumber"><u>ChangeNumber</u></string>
 
     <array name="initial_slider_values">
         <item>0.0</item>

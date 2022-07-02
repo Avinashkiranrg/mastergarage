@@ -29,6 +29,7 @@
                 android:layout_height="60dp"
                 android:layout_margin="8dp"
                 android:scaleType="fitXY"
+                android:background="@drawable/car2"
                 app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

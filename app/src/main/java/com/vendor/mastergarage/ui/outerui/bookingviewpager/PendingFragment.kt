@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.asLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.vendor.mastergarage.adapters.PendingAdapter
 import com.vendor.mastergarage.constraints.Constraints
@@ -49,7 +50,7 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
         // Inflate the layout for this fragment
         binding = FragmentPendingBinding.inflate(inflater, container, false)
 
-        viewModel.leads.observe(viewLifecycleOwner, Observer {
+        viewModel.pendingData.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Response.Loading -> {
                     Toast.makeText(requireActivity(), "Loading", Toast.LENGTH_SHORT)
@@ -57,13 +58,13 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
                 }
                 is Response.Success -> {
                     if (it.data?.success == TRUE_INT) {
-                        val vItem = it.data.result as MutableList<LeadsItem>
+                      /*  val vItem = it.data.result as MutableList<LeadsItem>
                         size = vItem.size
                         vItem.sortBy { it1 -> it1.leadId }
-                        vItem.reverse()
-                        filterList = ArrayList()
-                        filterList!!.addAll(vItem)
-                        pendingAdapter = PendingAdapter(requireActivity(), vItem, this)
+                        vItem.reverse()*/
+//                        filterList = ArrayList()
+//                        filterList!!.addAll(vItem)
+                        pendingAdapter = PendingAdapter(requireActivity(), it.data.result, this)
                         binding.recyclerView.apply {
                             setHasFixedSize(true)
                             adapter = pendingAdapter
@@ -139,7 +140,7 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
                         if (vItem != null) {
                             if (vItem.success == Constraints.TRUE_INT) {
                                 filterList?.remove(leadItem)
-                                filterList?.let { it1 -> pendingAdapter.setFilter(it1) }
+                              //  filterList?.let { it1 -> pendingAdapter.setFilter(it1) }
                             }
                             Toast.makeText(requireActivity(), vItem.message, Toast.LENGTH_SHORT)
                                 .show()
@@ -217,7 +218,11 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
                                                     intent.putExtra("status", "2")
                                                     requireActivity().startActivity(intent)
                                                 } else {
-                                                    viewModel.loadUi()
+                                                    vendorPreference.getVendorId.asLiveData().observe(requireActivity()) {
+                                                        Log.e("UId", it.toString())
+                                                        viewModel.loadUi(it!!,"ongoing")
+                                                    }
+
                                                 }
                                             }
                                         }
@@ -240,8 +245,14 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
         }
     }
 
+
     override fun onResume() {
         super.onResume()
-        viewModel.loadUi()
+
+        vendorPreference.getVendorId.asLiveData().observe(requireActivity()) {
+            Log.e("UId", it.toString())
+            viewModel.loadUi(it!!,"ongoing")
+        }
+
     }
 }

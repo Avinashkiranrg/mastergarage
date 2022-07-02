@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vendor.mastergarage.databinding.LayoutOngoingBinding
 import com.vendor.mastergarage.model.OnGoingDataItem
+import com.vendor.mastergarage.model.ResultOnGoing
 import com.vendor.mastergarage.utlis.assetsToBitmapModel
 import com.vendor.mastergarage.utlis.calculateMoney
 
 
 class OnGoingAdapter(
     private val context: Context,
-    private var list: List<OnGoingDataItem>,
+    private var list: List<ResultOnGoing>,
     private val onItemClickListener: OnItemClickListener
 ) :
     RecyclerView.Adapter<OnGoingAdapter.MyViewHolder>() {
@@ -37,10 +38,10 @@ class OnGoingAdapter(
     @SuppressLint("SetTextI18n", "HardwareIds")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val leadItem = list[position]
-        holder.itemBinding.carName.text = "${leadItem.manufacturerName} ${leadItem.model}"
+        holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-        holder.itemBinding.estimatedTotal.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+    /*    holder.itemBinding.estimatedTotal.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
 
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
@@ -57,7 +58,7 @@ class OnGoingAdapter(
         bitmap?.apply {
             holder.itemBinding.imageView.setImageBitmap(this)
         }
-
+*/
 
 //        if (leadItem.vImageUri != null) {
 //            try {
@@ -68,10 +69,10 @@ class OnGoingAdapter(
 //                Log.e("GlideException", "GlideException")
 //            }
 //        }
-        holder.itemBinding.root.setOnClickListener {
+     /*   holder.itemBinding.root.setOnClickListener {
             onItemClickListener.onItemClick(leadItem)
         }
-
+*/
     }
 
     class MyViewHolder(val itemBinding: LayoutOngoingBinding) :

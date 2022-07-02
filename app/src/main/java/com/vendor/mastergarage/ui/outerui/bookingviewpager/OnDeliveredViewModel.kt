@@ -26,15 +26,20 @@ class OnDeliveredViewModel @Inject constructor(
     val onGoing: LiveData<Response<OnDelivered>>
         get() = ongoingLiveData
 
+    private val onDeliveredLiveData = MutableLiveData<Response<OnGoingRespo>>()
+
+    val onDelivered : LiveData<Response<OnGoingRespo>>
+    get() = onDeliveredLiveData
+
     private fun getStoredOutletObject(): OutletsItem? {
         return repository.getStoredOutletObject()
     }
 
-    init {
+    /*init {
         getStoredOutletObject()?.let { it.outletId?.let { it1 -> getDelivered(it1) } }
-    }
+    }*/
 
-    private fun getDelivered(outletId: Int) = viewModelScope.launch(Dispatchers.IO) {
+    private fun getDeliver(outletId: Int) = viewModelScope.launch(Dispatchers.IO) {
         try {
             if (NetworkUtil.isInternetAvailable(context)) {
                 ongoingLiveData.postValue(Response.Loading())
@@ -52,9 +57,27 @@ class OnDeliveredViewModel @Inject constructor(
         }
     }
 
+    private fun getDeliveredData(vendorId : String,action:String) = viewModelScope.launch(Dispatchers.IO) {
+        try {
+            if (NetworkUtil.isInternetAvailable(context)) {
+                onDeliveredLiveData.postValue(Response.Loading())
+                val result = repository.getDeliveredData(vendorId,action)
+                if (result.body() != null) {
+                    onDeliveredLiveData.postValue(Response.Success(result.body()))
+                } else {
+                    onDeliveredLiveData.postValue(Response.Failure("api error"))
+                }
+            } else {
+                onDeliveredLiveData.postValue(Response.Failure("No network"))
+            }
+        } catch (e: Exception) {
+            onDeliveredLiveData.postValue(Response.Failure(e.message.toString()))
+        }
+    }
 
 
-    fun loadUi() {
-        getStoredOutletObject()?.let { it.outletId?.let { it1 -> getDelivered(it1) } }
+
+    fun loadUi(vendorId: String, s: String) {
+        getDeliveredData(vendorId,s)
     }
 }

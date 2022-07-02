@@ -25,7 +25,9 @@ class AppModule {
     companion object {
         const val FLAG_URL = "https://purecatamphetamine.github.io/country-flag-icons/3x2/"
 //        private const val BASE_URL = "http://192.168.129.22/garage/"
-        private const val BASE_URL = "http://mastergarage.in/garageapi/"
+     //old BASE_URL   private const val BASE_URL = "http://mastergarage.in/garageapi/"
+    // New BASE_URL
+         private const val BASE_URL = "http://www.mastergarage.in/garageapi/vendor/"
 
         private const val COUNTRY_URL =
             "https://gist.githubusercontent.com/DmytroLisitsyn/1c31186e5b66f1d6c52da6b5c70b12ad/raw/01b1af9b267471818f4f8367852bd4a2814cbae6/"

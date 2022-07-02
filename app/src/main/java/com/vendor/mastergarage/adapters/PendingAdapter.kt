@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vendor.mastergarage.databinding.LayoutPendingBinding
 import com.vendor.mastergarage.model.LeadsItem
+import com.vendor.mastergarage.model.ResultOnGoing
 import com.vendor.mastergarage.utlis.assetsToBitmapModel
 import com.vendor.mastergarage.utlis.calculateMoney
 import com.vendor.mastergarage.utlis.isBetweenValidTime
@@ -18,7 +19,7 @@ import java.util.*
 
 class PendingAdapter(
     private val context: Context,
-    private var list: List<LeadsItem>,
+    private var list: List<ResultOnGoing>,
     private val onItemClickListener: OnItemClickListener
 ) :
     RecyclerView.Adapter<PendingAdapter.MyViewHolder>() {
@@ -44,10 +45,10 @@ class PendingAdapter(
     @SuppressLint("SetTextI18n", "HardwareIds")
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val leadItem = list[position]
-        holder.itemBinding.carName.text = "${leadItem.manufacturerName} ${leadItem.model}"
+        holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-        holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+        /*   holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
 //            leadItem.registrationNo?.toFormattedString(p)
@@ -60,7 +61,7 @@ class PendingAdapter(
         bitmap?.apply {
             holder.itemBinding.imageView.setImageBitmap(this)
         }
-
+*/
 //        if (leadItem.v_imageUri != null) {
 //            try {
 //                holder.itemBinding.imageView.imageFromUrl(leadItem.v_imageUri)
@@ -71,7 +72,7 @@ class PendingAdapter(
 //            }
 //        }
 
-        val stringBuffer = StringBuffer("")
+        /* val stringBuffer = StringBuffer("")
         if (leadItem.servicerequest?.isNullOrEmpty() == false) {
             if (leadItem.servicerequest.size <= 2) {
                 leadItem.servicerequest.forEach {
@@ -128,8 +129,8 @@ class PendingAdapter(
             holder.itemBinding.timeLeft.visibility = View.VISIBLE
             holder.itemBinding.timeLeftHead.visibility = View.VISIBLE
         }
-
-        object : CountDownTimer(mills, 1000) {
+*/
+        /* object : CountDownTimer(mills, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val seconds: Long = millisUntilFinished / 1000
                 val minutes = seconds / 60
@@ -162,9 +163,8 @@ class PendingAdapter(
 
             onItemClickListener.onItemConfirm(leadItem, currentDate, currentTime)
         }
-
+*/
     }
-
     private fun calculateMillis(leadItem: LeadsItem): Long {
 
         val calendar: Calendar = Calendar.getInstance()
@@ -200,6 +200,7 @@ class PendingAdapter(
     class MyViewHolder(val itemBinding: LayoutPendingBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
     }
+/*
 
     @SuppressLint("NotifyDataSetChanged")
     @Suppress("UNCHECKED_CAST")
@@ -207,6 +208,7 @@ class PendingAdapter(
         list = filterList as ArrayList<LeadsItem>
         notifyDataSetChanged()
     }
+*/
 
     override fun getItemCount(): Int = list.size
 }
