@@ -3,18 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable-xhdpi/boders.xml" value="0.16" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable/activity_main__tab_background.xml" value="0.156" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable/circular.xml" value="0.156" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable/main_background.xml" value="0.156" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable/roundcircle.xml" value="0.16" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable/rounded_corner.xml" value="0.16" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable/two_corner_background.xml" value="0.156" />
+        <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_awaiting_confirmation.xml" value="0.25" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_country_list.xml" value="0.25" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_otp.xml" value="0.25" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_search_outlets.xml" value="0.25" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_service_advisor.xml" value="0.25" />
+        <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_vehicle_details6.xml" value="0.25" />
+        <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/awaiting_adapter_item.xml" value="0.25" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/country_item.xml" value="0.25" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/fragment_account.xml" value="0.25" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/fragment_booking.xml" value="0.25" />

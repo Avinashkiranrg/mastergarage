@@ -22,6 +22,7 @@
     <dimen name="fifty_six_dip_text_size">40sp</dimen>
     <dimen name="forty_one_dip_text_size">35sp</dimen>
     <dimen name="twenty_eight_dip_text_size">25sp</dimen>
+    <dimen name="twenty_three_dip_text_size">23sp</dimen>
     <dimen name="twenty_two_dip_text_size">20sp</dimen>
     <dimen name="twenty_dip_text_size">17sp</dimen>
     <dimen name="eighteen_dip_text_size">15sp</dimen>
