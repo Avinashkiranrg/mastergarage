@@ -89,7 +89,7 @@ class DeliveredFragment : Fragment(), OnDeliveredAdapter.OnItemClickListener {
         super.onResume()
         vendorPreference.getVendorId.asLiveData().observe(requireActivity()) {
             Log.e("UId", it.toString())
-            viewModel.loadUi(it!!, "ongoing")
+            viewModel.loadUi(it!!, "delivered")
         }
     }
 

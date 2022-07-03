@@ -21,6 +21,7 @@ import com.vendor.mastergarage.databinding.FragmentBooking4Binding
 import com.vendor.mastergarage.datastore.VendorPreference
 import com.vendor.mastergarage.networkcall.Response
 import com.vendor.mastergarage.ui.notifications.NotificationUi
+import com.vendor.mastergarage.ui.outerui.Awaiting_ConfirmationActivity
 import com.vendor.mastergarage.ui.outerui.bookingviewpager.DeliveredFragment
 import com.vendor.mastergarage.ui.outerui.bookingviewpager.OnGoingFragment
 import com.vendor.mastergarage.ui.outerui.bookingviewpager.PendingFragment
@@ -65,6 +66,11 @@ class BookingFragment : Fragment() {
         binding.notification.setOnClickListener {
             val bottomSheetFragment: BottomSheetDialogFragment = NotificationUi()
             bottomSheetFragment.show(childFragmentManager, NotificationUi.TAG)
+        }
+
+        binding.cardView.setOnClickListener {
+            val intent = Intent(requireActivity(), Awaiting_ConfirmationActivity::class.java)
+            startActivity(intent)
         }
 
         binding.locationChip.setOnClickListener {

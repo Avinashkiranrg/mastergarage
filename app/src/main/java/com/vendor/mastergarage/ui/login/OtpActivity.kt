@@ -1,16 +1,20 @@
 package com.vendor.mastergarage.ui.login
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import com.vendor.mastergarage.constraints.Constraints
 import com.vendor.mastergarage.databinding.ActivityOtpBinding
 import com.vendor.mastergarage.datastore.VendorPreference
 import com.vendor.mastergarage.networkcall.Response
 import com.vendor.mastergarage.ui.mainactivity.MainActivity
+import com.vendor.mastergarage.ui.outerui.Awaiting_ConfirmationActivity
+import com.vendor.mastergarage.ui.outerui.bookingviewpager.PendingViewModel
 import com.vendor.mastergarage.utlis.goToActivitiesFinish
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -21,6 +25,7 @@ class OtpActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityOtpBinding
     private val viewModel: LoginViewModel by viewModels()
+    private val pendingViewModel: PendingViewModel by viewModels()
 
     var phoneNo: String? = null
     var venderId: String? = null
@@ -68,6 +73,39 @@ class OtpActivity : AppCompatActivity() {
                 }
             }
         })
+
+        pendingViewModel.pendingData.observe(this, Observer {
+            when (it) {
+                is Response.Loading -> {
+                    Toast.makeText(this, "Loading", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                is Response.Success -> {
+                    if (it.data?.success == Constraints.TRUE_INT) {
+                        /*  val vItem = it.data.result as MutableList<LeadsItem>
+                          size = vItem.size
+                          vItem.sortBy { it1 -> it1.leadId }
+                          vItem.reverse()*/
+//                        filterList = ArrayList()
+//                        filterList!!.addAll(vItem)
+
+                        if (it.data.result.size>0){
+                            goToActivitiesFinish(this@OtpActivity, Awaiting_ConfirmationActivity::class.java)
+                        }else{
+                            goToActivitiesFinish(this@OtpActivity, MainActivity::class.java)
+                        }
+                    } else {
+                        Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                }
+                is Response.Failure -> {
+                    // Toast.makeText(requireActivity(), it.errorMessage, Toast.LENGTH_SHORT) .show()
+                    Log.e("Awaiting_ConfirmationActivity.TAG", it.errorMessage.toString())
+                }
+            }
+        })
     }
 
     private fun saveData() {
@@ -86,7 +124,12 @@ class OtpActivity : AppCompatActivity() {
                 vendorPreference.setVendorLogin(it)
             }
 
-            goToActivitiesFinish(this@OtpActivity, MainActivity::class.java)
+            vendorPreference.getVendorId.asLiveData().observe(this@OtpActivity) {
+                Log.e("UId", it.toString())
+                pendingViewModel.loadUi(it!!, "pending")
+            }
+
+
         }
     }
 }

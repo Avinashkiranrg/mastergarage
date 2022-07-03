@@ -20,6 +20,8 @@
     <color name="card_gray">#F4F3F3</color>
     <color name="get_OtpColor">#2962FF</color>
     <color name="green2">#53BD8C</color>
+    <color name="light_gray">#5D6186</color>
+    <color name="full_blue">#00155A</color>
 
     <color name="status_bar_light">#FFea80fc</color>
     <color name="status_bar_dark">#FF263238</color>
@@ -29,10 +31,11 @@
     <color name="bottomCardColor">#FBFAFA</color>
     <color name="leadsBackground">#F8F4F4</color>
     <color name="light_color_for_icon">#B1ABAB</color>
-    <color name="light_color_">#606161</color>
+        <color name="light_color_">#606161</color>
     <color name="notification_text_color">#142A62</color>
     <color name="pink">#A330AB</color>
     <color name="v_color">#6A6363</color>
     <color name="discount_background">#8D95F5</color>
     <color name="black3">#404040</color>
+    <color name="dot_gray">#D8D8D8</color>
 </resources>

@@ -206,8 +206,8 @@
 
                             <org.eazegraph.lib.charts.PieChart
                                 android:id="@+id/charts"
-                                android:layout_width="100dp"
-                                android:layout_height="100dp"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
                                 android:layout_margin="16dp"
                                 android:visibility="visible"
                                 app:layout_constraintBottom_toBottomOf="parent"
@@ -231,7 +231,7 @@
                                 android:id="@+id/constraintLayout5"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
-                                android:paddingStart="10dp"
+                                android:paddingStart="5dp"
                                 android:paddingEnd="10dp"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"

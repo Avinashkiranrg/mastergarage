@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.vendor.mastergarage.databinding.AwaitingAdapterItemBinding
 import com.vendor.mastergarage.databinding.LayoutPendingBinding
 import com.vendor.mastergarage.model.LeadsItem
 import com.vendor.mastergarage.model.ResultOnGoing
@@ -17,12 +18,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-class PendingAdapter(
+class AwaitingAdapter(
     private val context: Context,
     private var list: List<ResultOnGoing>,
     private val onItemClickListener: OnItemClickListener
 ) :
-    RecyclerView.Adapter<PendingAdapter.MyViewHolder>() {
+    RecyclerView.Adapter<AwaitingAdapter.MyViewHolder>() {
     lateinit var recyclerView: RecyclerView
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -38,7 +39,7 @@ class PendingAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemBinding =
-            LayoutPendingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            AwaitingAdapterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return MyViewHolder(itemBinding)
     }
 
@@ -165,6 +166,7 @@ class PendingAdapter(
         }
 */
     }
+
     private fun calculateMillis(leadItem: LeadsItem): Long {
 
         val calendar: Calendar = Calendar.getInstance()
@@ -197,7 +199,7 @@ class PendingAdapter(
         return date
     }
 
-    class MyViewHolder(val itemBinding: LayoutPendingBinding) :
+    class MyViewHolder(val itemBinding: AwaitingAdapterItemBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
     }
 
@@ -208,5 +210,12 @@ class PendingAdapter(
         notifyDataSetChanged()
     }
 
-    override fun getItemCount(): Int = list.size
+    override fun getItemCount(): Int {
+        return if (list.size > 3)
+            3
+        else {
+            list.size
+        }
+
+    }
 }

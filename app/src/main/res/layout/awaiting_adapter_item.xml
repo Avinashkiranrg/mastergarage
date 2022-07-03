@@ -18,7 +18,7 @@
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
             android:text="Awaiting Confirmation"
-            android:textColor="@color/blue"
+            android:textColor="@color/black"
             android:textSize="@dimen/twenty_eight_dip_text_size" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:fontFamily="@font/poppins_bold"
             android:gravity="center"
             android:text="$ 1000"
-            android:textColor="@color/blue"
+            android:textColor="@color/black"
             android:textSize="@dimen/twenty_three_dip_text_size" />
 
         <LinearLayout
@@ -77,11 +77,17 @@
             android:layout_marginLeft="15dp"
             android:layout_marginBottom="10dp"
             app:cardCornerRadius="10dp">
-
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:src="@drawable/blue_logo"
+                android:layout_gravity="center" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,13 +103,14 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/carName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Maruti Suzuki"
-                            android:textColor="@color/blue"
+                            android:textColor="@color/light_gray"
                             android:textSize="@dimen/fourteen_dip_text_size" />
 
                         <TextView
@@ -115,10 +122,11 @@
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="center"
                             android:text="Baleno"
-                            android:textColor="@color/blue2"
+                            android:textColor="#2650D8"
                             android:textSize="@dimen/eighteen_dip_text_size" />
 
                         <TextView
+                            android:id="@+id/carFuelType"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -150,7 +158,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:background="@color/blue" />
+                    android:background="@color/light_color_" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -172,7 +180,7 @@
                             android:layout_weight="1"
                             android:gravity="center"
                             android:text="Appointment"
-                            android:textColor="@color/blue"
+                            android:textColor="@color/light_gray"
                             android:textSize="@dimen/fourteen_dip_text_size" />
 
                         <TextView
@@ -184,7 +192,7 @@
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="center"
                             android:text="18th October 2020"
-                            android:textColor="@color/blue2"
+                            android:textColor="#2650D8"
                             android:textSize="@dimen/eighteen_dip_text_size" />
 
                         <TextView
@@ -196,7 +204,7 @@
                             android:gravity="center"
                             android:fontFamily="@font/poppins_bold"
                             android:text="4.00 PM -5.00 PM"
-                            android:textColor="@color/blue2"
+                            android:textColor="#2650D8"
                             android:textSize="@dimen/eighteen_dip_text_size" />
                     </LinearLayout>
 
@@ -229,7 +237,7 @@
                     android:layout_marginTop="5dp"
                     android:layout_marginLeft="15dp"
                     android:layout_marginRight="15dp"
-                    android:background="@color/blue" />
+                    android:background="@color/light_color_" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -263,17 +271,19 @@
                             android:fontFamily="@font/poppins_bold"
                             android:gravity="start"
                             android:text="Basic Service, Car Inspection, Starter Motor Repair, Engine Scanning"
-                            android:textColor="@color/blue2"
+                            android:textColor="#2650D8"
                             android:textSize="@dimen/eighteen_dip_text_size" />
 
                     </LinearLayout>
                 </LinearLayout>
 
-                <Button
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:text="View Drtails"
-                    android:background="@drawable/boders"
+                    android:gravity="center"
+                    android:textSize="15sp"
+                    android:background="@drawable/boarder"
                     android:textColor="@color/blue"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
@@ -286,21 +296,27 @@
                     android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
 
-                    <Button
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:text="Decline"
+                        android:gravity="center"
                         android:layout_weight="1"
-                        android:background="@color/red"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:background="@drawable/red_bg"
                         android:textColor="@color/white"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp" />
 
-                    <Button
+                    <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="40dp"
                         android:text="Confirm"
-                        android:background="@color/green2"
+                        android:gravity="center"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:background="@drawable/green_bg"
                         android:textColor="@color/white"
                         android:layout_marginLeft="20dp"
                         android:layout_weight="1"
