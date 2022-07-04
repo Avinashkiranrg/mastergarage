@@ -35,8 +35,7 @@ class AcceptLeadsViewModel @Inject constructor(
                 if (NetworkUtil.isInternetAvailable(context)) {
 
                     _acceptLeadsMutLiveData.postValue(Response.Loading())
-                    val result = repository.acceptLeads(acceptLeadsReq
-                    )
+                    val result = repository.acceptLeads(acceptLeadsReq)
                     if (result.body() != null) {
                         _acceptLeadsMutLiveData.postValue(Response.Success(result.body()))
                     } else {
