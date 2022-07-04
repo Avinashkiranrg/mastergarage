@@ -25,27 +25,67 @@
             android:background="@android:color/white"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
-            <ImageView
-                android:id="@+id/logo"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="start"
-                android:background="@drawable/logo"
-                android:contentDescription="@string/todo"
-                android:padding="10dp" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/logoName"
+            <LinearLayout
+                android:id="@+id/locationChip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:contentDescription="@string/todo"
-                android:fontFamily="@font/poppins_bold"
-                android:paddingStart="5dp"
-                android:text="Master\nGarage"
-                android:textColor="@color/blue"
-                android:textSize="@dimen/E_twelve_dip_text_size" />
+                android:orientation="horizontal">
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="20dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="start"
+                    android:background="@drawable/location"
+                    android:backgroundTint="@color/yellow"
+                    android:contentDescription="@string/todo"
+                    android:padding="10dp" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/cityHead"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/arrow_down_small"
+                        android:drawableTint="@color/blue"
+                        android:drawablePadding="10dp"
+                        android:fontFamily="@font/poppins_bold"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="CEAT TYRES "
+                        android:textColor="@color/blue"
+                        android:textSize="12dp" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/address_home"
+                        android:layout_width="210dp"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:includeFontPadding="false"
+                        android:inputType="textMultiLine"
+                        android:lines="2"
+                        android:text="A,Happy Home, Maharashtra,401105"
+                        android:textColor="@color/gray"
+                        android:textSize="12dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/notification"
@@ -54,7 +94,7 @@
                 android:layout_gravity="end"
                 android:elevation="10dp"
                 android:padding="10dp"
-                app:chipBackgroundColor="@color/white"
+                app:chipBackgroundColor="@color/yellow"
                 app:chipEndPadding="4dp"
                 app:chipIcon="@drawable/ic_notifications"
                 app:chipIconTint="@color/black"
@@ -69,7 +109,7 @@
                 android:layout_gravity="end"
                 android:elevation="10dp"
                 android:padding="10dp"
-                app:chipBackgroundColor="@color/white"
+                app:chipBackgroundColor="@color/yellow"
                 app:chipEndPadding="4dp"
                 app:chipIcon="@drawable/ic_search"
                 app:chipIconTint="@color/black"
@@ -84,7 +124,7 @@
                 android:layout_gravity="end"
                 android:elevation="10dp"
                 android:padding="10dp"
-                app:chipBackgroundColor="@color/white"
+                app:chipBackgroundColor="@color/yellow"
                 app:chipCornerRadius="4dp"
                 app:chipEndPadding="3dp"
                 app:chipIcon="@drawable/qr_code"
@@ -93,22 +133,6 @@
                 app:textEndPadding="0dp"
                 app:textStartPadding="0dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/locationChip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:elevation="10dp"
-                android:padding="10dp"
-                android:text="Mumbai"
-                android:textAppearance="@style/chipFontStyle"
-                app:chipBackgroundColor="@color/white"
-                app:chipIcon="@drawable/location"
-                app:chipIconSize="20dp"
-                app:chipIconTint="@color/black"
-                app:closeIcon="@drawable/ic_arrow_down"
-                app:closeIconTint="@color/black"
-                app:closeIconVisible="true" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -251,10 +275,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:orientation="horizontal"
+                                        android:weightSum="10"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
-                                        android:weightSum="10"
                                         tools:ignore="MissingConstraints">
 
                                         <com.google.android.material.textview.MaterialTextView
@@ -281,8 +305,8 @@
                                             android:layout_height="wrap_content"
                                             android:layout_weight="4"
                                             android:fontFamily="@font/opensans_bold"
-                                            android:text="Booking"
                                             android:gravity="start"
+                                            android:text="Booking"
                                             android:textColor="@color/notification_text_color"
                                             android:textSize="@dimen/fifteen_dip_text_size"
                                             app:layout_constraintBottom_toBottomOf="parent"
@@ -324,10 +348,10 @@
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:orientation="horizontal"
+                                        android:weightSum="10"
                                         app:layout_constraintEnd_toEndOf="parent"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
-                                        android:weightSum="10"
                                         tools:ignore="MissingConstraints">
 
                                         <com.google.android.material.textview.MaterialTextView
@@ -456,7 +480,6 @@
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.constraintlayout.widget.ConstraintLayout>
                     </com.google.android.material.card.MaterialCardView>
-
                 </LinearLayout>
             </LinearLayout>
 

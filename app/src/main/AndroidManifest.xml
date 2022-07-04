@@ -28,6 +28,9 @@
         android:usesCleartextTraffic="true"
         tools:replace="android:theme">
         <activity
+            android:name=".ui.outerui.bookingviewpager.ConfirmActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.outerui.Awaiting_ConfirmationActivity"
             android:exported="false" />
         <activity

@@ -2,7 +2,9 @@ package com.vendor.mastergarage.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.CountDownTimer
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,7 +23,8 @@ import java.util.*
 class AwaitingAdapter(
     private val context: Context,
     private var list: List<ResultOnGoing>,
-    private val onItemClickListener: OnItemClickListener
+    private val onItemClickListener: OnItemClickListener,
+    private val acceptClicks : AcceptClicks
 ) :
     RecyclerView.Adapter<AwaitingAdapter.MyViewHolder>() {
     lateinit var recyclerView: RecyclerView
@@ -37,6 +40,12 @@ class AwaitingAdapter(
         fun onDecline(leadItem: LeadsItem)
     }
 
+    interface AcceptClicks{
+
+        fun onConfirmClick(resultOnGoing: ResultOnGoing,position: Int)
+
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemBinding =
             AwaitingAdapterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -48,6 +57,12 @@ class AwaitingAdapter(
         val leadItem = list[position]
         holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
+
+        holder.itemBinding.confirmBtn.setOnClickListener {
+
+            acceptClicks.onConfirmClick(leadItem,position)
+
+        }
 
         /*   holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
 //        val p = "## ## ## ####"
@@ -209,6 +224,7 @@ class AwaitingAdapter(
         list = filterList as ArrayList<ResultOnGoing>
         notifyDataSetChanged()
     }
+
 
     override fun getItemCount(): Int {
         return if (list.size > 3)

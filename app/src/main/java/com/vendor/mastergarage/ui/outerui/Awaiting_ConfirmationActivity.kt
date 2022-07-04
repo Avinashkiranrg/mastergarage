@@ -21,6 +21,7 @@ import com.vendor.mastergarage.databinding.ActivityAwaitingConfirmationBinding
 import com.vendor.mastergarage.datastore.VendorPreference
 import com.vendor.mastergarage.model.LeadsItem
 import com.vendor.mastergarage.model.OnGoingRespo
+import com.vendor.mastergarage.model.ResultOnGoing
 import com.vendor.mastergarage.networkcall.Response
 import com.vendor.mastergarage.ui.mainactivity.MainActivity
 import com.vendor.mastergarage.ui.outerui.bookingviewpager.PendingViewModel
@@ -32,7 +33,7 @@ import kotlin.math.abs
 
 
 @AndroidEntryPoint
-class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnItemClickListener {
+class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnItemClickListener,AwaitingAdapter.AcceptClicks {
     @Inject
     lateinit var vendorPreference: VendorPreference
     lateinit var binding: ActivityAwaitingConfirmationBinding
@@ -84,7 +85,7 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
     }
 
     private fun initializeAwaitingSlider(data: OnGoingRespo) {
-        awaitingAdapter = AwaitingAdapter(this, data.result, this)
+        awaitingAdapter = AwaitingAdapter(this, data.result, this,this)
 
         val dots: Array<ImageView?>
          manager = LinearLayoutManager(
@@ -184,15 +185,16 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
     }
 
     override fun onItemClick(leadItem: LeadsItem) {
-        TODO("Not yet implemented")
     }
 
     override fun onItemConfirm(leadItem: LeadsItem, currentDate: String, currentTime: String) {
-        TODO("Not yet implemented")
     }
 
     override fun onDecline(leadItem: LeadsItem) {
-        TODO("Not yet implemented")
+    }
+
+    override fun onConfirmClick(resultOnGoing: ResultOnGoing, position: Int) {
+        Log.e("ConfirmClick","$position")
     }
 
 
