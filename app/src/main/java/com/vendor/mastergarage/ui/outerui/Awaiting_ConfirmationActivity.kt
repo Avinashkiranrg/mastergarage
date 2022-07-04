@@ -19,28 +19,33 @@ import com.vendor.mastergarage.adapters.AwaitingAdapter
 import com.vendor.mastergarage.constraints.Constraints
 import com.vendor.mastergarage.databinding.ActivityAwaitingConfirmationBinding
 import com.vendor.mastergarage.datastore.VendorPreference
+import com.vendor.mastergarage.model.AcceptLeadsReq
 import com.vendor.mastergarage.model.LeadsItem
 import com.vendor.mastergarage.model.OnGoingRespo
 import com.vendor.mastergarage.model.ResultOnGoing
 import com.vendor.mastergarage.networkcall.Response
 import com.vendor.mastergarage.ui.mainactivity.MainActivity
+import com.vendor.mastergarage.ui.outerui.bookingviewpager.ConfirmActivity
 import com.vendor.mastergarage.ui.outerui.bookingviewpager.PendingViewModel
 import com.vendor.mastergarage.utlis.goToActivitiesFinish
 import dagger.hilt.android.AndroidEntryPoint
+import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
 import kotlin.math.abs
 
 
 @AndroidEntryPoint
-class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnItemClickListener,AwaitingAdapter.AcceptClicks {
+class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnItemClickListener,
+    AwaitingAdapter.AcceptClicks {
     @Inject
     lateinit var vendorPreference: VendorPreference
     lateinit var binding: ActivityAwaitingConfirmationBinding
     private val viewModel: PendingViewModel by viewModels()
+    private val acceptLeadsviewModel: AcceptLeadsViewModel by viewModels()
     var filterList: ArrayList<LeadsItem?>? = null
-    var manager:LinearLayoutManager?=null
-     var position: Int=0
+    var manager: LinearLayoutManager? = null
+    var position: Int = 0
     private lateinit var awaitingAdapter: AwaitingAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,19 +81,43 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
                 }
             }
         })
+
+
+
+        acceptLeadsviewModel._aceptLeadsData.observe(this, Observer {
+            when (it) {
+                is Response.Loading -> {
+                    Toast.makeText(this, "Loading", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                is Response.Success -> {
+                    if (it.data?.success == Constraints.TRUE_INT) {
+                        goToActivitiesFinish(this, ConfirmActivity::class.java)
+                    } else {
+                        Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                }
+                is Response.Failure -> {
+                    // Toast.makeText(requireActivity(), it.errorMessage, Toast.LENGTH_SHORT) .show()
+                    Log.e("Awaiting_ConfirmationActivity.TAG", it.errorMessage.toString())
+                }
+            }
+        })
     }
 
     private fun setOnClicks() {
-        binding.homeBtn.setOnClickListener{
+        binding.homeBtn.setOnClickListener {
             goToActivitiesFinish(this@Awaiting_ConfirmationActivity, MainActivity::class.java)
         }
     }
 
     private fun initializeAwaitingSlider(data: OnGoingRespo) {
-        awaitingAdapter = AwaitingAdapter(this, data.result, this,this)
+        awaitingAdapter = AwaitingAdapter(this, data.result, this, this)
 
         val dots: Array<ImageView?>
-         manager = LinearLayoutManager(
+        manager = LinearLayoutManager(
             this@Awaiting_ConfirmationActivity,
             LinearLayoutManager.HORIZONTAL,
             false
@@ -163,12 +192,11 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
                         )
                     )
 
-                }catch (n: ArrayIndexOutOfBoundsException) {
+                } catch (n: ArrayIndexOutOfBoundsException) {
                     //
                 }
             }
         })
-
 
 
     }
@@ -194,7 +222,29 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
     }
 
     override fun onConfirmClick(resultOnGoing: ResultOnGoing, position: Int) {
-        Log.e("ConfirmClick","$position")
+
+        val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        sdf.timeZone = TimeZone.getTimeZone("UTC")
+
+        val sdfTime = SimpleDateFormat("hh:mm:ss aa", Locale.getDefault())
+        sdfTime.timeZone = TimeZone.getTimeZone("UTC")
+        sdfTime.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"))
+
+        var acceptLeadsReq = AcceptLeadsReq(
+            resultOnGoing.leadId,
+            sdf.format(Date().time),
+            sdfTime.format(Date().time),
+            resultOnGoing.booking_date,
+            resultOnGoing.booking_time,
+            "${resultOnGoing.outletId}",
+            "${resultOnGoing.vehicleId}",
+            "${resultOnGoing.addressId}"
+        )
+
+
+
+        Log.e("acceptLeadsReq", acceptLeadsReq.toString())
+        acceptLeadsviewModel.acceptLeads(acceptLeadsReq!!)
     }
 
 

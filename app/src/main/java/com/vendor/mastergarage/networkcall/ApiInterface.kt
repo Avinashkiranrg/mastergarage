@@ -31,7 +31,7 @@ interface ApiInterface {
     ) : Response<DashBoardRespon>
 
 
-    @GET("getAllLeads.php?")
+    @GET("getAllBookings.php?")
     suspend fun onGoingData (
         @Query("vendorId") vendorId: String,
         @Query("action") action: String
@@ -102,6 +102,19 @@ interface ApiInterface {
         @Field("mobile_no") mobile_no: String,
         @Field("outletId") outletId: Int
     ): Response<ServiceAdvisorResponse>
+
+    @FormUrlEncoded
+    @POST("acceptLeads.php")
+    suspend fun acceptLeads(
+        @Field("leadId") leadId: String,
+        @Field("last_up_date") last_up_date: String,
+        @Field("last_up_time") last_up_time: String,
+        @Field("booking_date") booking_date: String,
+        @Field("booking_time") booking_time: String,
+        @Field("outletId") outletId: String,
+        @Field("vehicleId") vehicleId: String,
+        @Field("addressId") addressId: String
+    ): Response<AcceptLeadsResp>
 
 
 //    @FormUrlEncoded

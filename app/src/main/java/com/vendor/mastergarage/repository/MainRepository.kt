@@ -3,6 +3,7 @@ package com.vendor.mastergarage.repository
 import com.vendor.mastergarage.constraints.Constraints.Companion.OUTLET_STORE
 import com.vendor.mastergarage.constraints.Constraints.Companion.VENDOR_STORE
 import com.vendor.mastergarage.datastore.ModelPreferencesManager
+import com.vendor.mastergarage.model.AcceptLeadsReq
 import com.vendor.mastergarage.model.OutletsItem
 import com.vendor.mastergarage.model.Vendors
 import com.vendor.mastergarage.networkcall.ApiInterface
@@ -97,6 +98,19 @@ class MainRepository @Inject constructor(
         dob,
         mobile_no,
         outletId,
+    )
+
+    suspend fun acceptLeads(acceptLeadsReq: AcceptLeadsReq
+    ) = apiInterface.acceptLeads(
+        acceptLeadsReq.leadId.toString(),
+        acceptLeadsReq.last_up_date,
+        acceptLeadsReq.last_up_time,
+        acceptLeadsReq.booking_date,
+        acceptLeadsReq.booking_time,
+        acceptLeadsReq.outletId,
+        acceptLeadsReq.vehicleId,
+        acceptLeadsReq.addressId
+
     )
 
     suspend fun addService(
