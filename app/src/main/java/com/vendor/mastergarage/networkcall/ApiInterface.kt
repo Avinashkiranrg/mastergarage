@@ -307,7 +307,7 @@ interface ApiInterface {
     @GET("declineLeads.php")
     suspend fun declineLeads(
         @Query("leadId") leadId: Int
-    ): Response<UploadResponse>
+    ): Response<AcceptLeadsResp>
 
     @FormUrlEncoded
     @POST("acceptLeads.php")

@@ -26,8 +26,10 @@ import com.vendor.mastergarage.model.ResultOnGoing
 import com.vendor.mastergarage.networkcall.Response
 import com.vendor.mastergarage.ui.mainactivity.MainActivity
 import com.vendor.mastergarage.ui.outerui.bookingviewpager.ConfirmActivity
+import com.vendor.mastergarage.ui.outerui.bookingviewpager.DeclineActivity
 import com.vendor.mastergarage.ui.outerui.bookingviewpager.PendingViewModel
 import com.vendor.mastergarage.utlis.goToActivitiesFinish
+import com.vendor.mastergarage.utlis.goToActivityFinish
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
@@ -37,7 +39,7 @@ import kotlin.math.abs
 
 @AndroidEntryPoint
 class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnItemClickListener,
-    AwaitingAdapter.AcceptClicks {
+    AwaitingAdapter.AcceptClicks, AwaitingAdapter.DeclineClicks {
     @Inject
     lateinit var vendorPreference: VendorPreference
     lateinit var binding: ActivityAwaitingConfirmationBinding
@@ -105,6 +107,29 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
                 }
             }
         })
+
+
+        acceptLeadsviewModel._declineLeadsData.observe(this, Observer {
+            when (it) {
+                is Response.Loading -> {
+                    Toast.makeText(this, "Loading", Toast.LENGTH_SHORT)
+                        .show()
+                }
+                is Response.Success -> {
+                    if (it.data?.success == Constraints.TRUE_INT) {
+                        goToActivityFinish(this, DeclineActivity::class.java)
+                    } else {
+                        Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+
+                }
+                is Response.Failure -> {
+                    // Toast.makeText(requireActivity(), it.errorMessage, Toast.LENGTH_SHORT) .show()
+                    Log.e("Awaiting_ConfirmationActivity.TAG", it.errorMessage.toString())
+                }
+            }
+        })
     }
 
     private fun setOnClicks() {
@@ -114,7 +139,7 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
     }
 
     private fun initializeAwaitingSlider(data: OnGoingRespo) {
-        awaitingAdapter = AwaitingAdapter(this, data.result, this, this)
+        awaitingAdapter = AwaitingAdapter(this, data.result, this, this, this)
 
         val dots: Array<ImageView?>
         manager = LinearLayoutManager(
@@ -245,6 +270,10 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
 
         Log.e("acceptLeadsReq", acceptLeadsReq.toString())
         acceptLeadsviewModel.acceptLeads(acceptLeadsReq!!)
+    }
+
+    override fun onDeclineClick(resultOnGoing: ResultOnGoing, position: Int) {
+        acceptLeadsviewModel.declineLeads(resultOnGoing.leadId!!)
     }
 
 

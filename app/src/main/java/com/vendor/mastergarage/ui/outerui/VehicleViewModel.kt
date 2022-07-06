@@ -35,9 +35,9 @@ class VehicleViewModel @Inject constructor(
     val liveData: LiveData<Response<UpdateStatus>>
         get() = addLiveString
 
-    private val declineLiveString = MutableLiveData<Response<UploadResponse>>()
+    private val declineLiveString = MutableLiveData<Response<AcceptLeadsResp>>()
 
-    val onDecline: LiveData<Response<UploadResponse>>
+    val onDecline: LiveData<Response<AcceptLeadsResp>>
         get() = declineLiveString
 
     private val updateLiveData = MutableLiveData<Response<StatusUpdate>>()

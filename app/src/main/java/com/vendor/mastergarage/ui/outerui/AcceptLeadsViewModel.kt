@@ -26,6 +26,12 @@ class AcceptLeadsViewModel @Inject constructor(
         get() = _acceptLeadsMutLiveData
 
 
+    private val _declineLeadsMutLiveData = MutableLiveData<Response<AcceptLeadsResp>>()
+
+    val _declineLeadsData: LiveData<Response<AcceptLeadsResp>>
+        get() = _declineLeadsMutLiveData
+
+
 
     fun acceptLeads(
        acceptLeadsReq: AcceptLeadsReq
@@ -46,6 +52,29 @@ class AcceptLeadsViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 _acceptLeadsMutLiveData.postValue(Response.Failure(e.message.toString()))
+            }
+        }
+
+
+    fun declineLeads(
+        leadId: Int
+    ) =
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                if (NetworkUtil.isInternetAvailable(context)) {
+
+                    _declineLeadsMutLiveData.postValue(Response.Loading())
+                    val result = repository.declineLeads(leadId)
+                    if (result.body() != null) {
+                        _declineLeadsMutLiveData.postValue(Response.Success(result.body()))
+                    } else {
+                        _declineLeadsMutLiveData.postValue(Response.Failure("Failed"))
+                    }
+                } else {
+                    _declineLeadsMutLiveData.postValue(Response.Failure("No network"))
+                }
+            } catch (e: Exception) {
+                _declineLeadsMutLiveData.postValue(Response.Failure(e.message.toString()))
             }
         }
 

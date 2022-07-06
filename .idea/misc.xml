@@ -12,10 +12,14 @@
         <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/drawable/red_bg.xml" value="0.138" />
         <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/activity_awaiting_confirmation.xml" value="0.136" />
         <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/activity_decline.xml" value="0.152" />
+        <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/activity_vehicle_details2.xml" value="0.2" />
         <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/awaiting_adapter_item.xml" value="0.264" />
         <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/fragment_booking4.xml" value="0.2" />
         <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/fragment_confirm.xml" value="0.2" />
         <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/fragment_service_info.xml" value="0.22826086956521738" />
+        <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/layout_ongoing.xml" value="0.264" />
+        <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/layout_pending.xml" value="0.264" />
+        <entry key="..\:/Kotlin/mastergaragevender/app/src/main/res/layout/layout_scheduled_service_package.xml" value="0.12158054711246201" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable/circular.xml" value="0.156" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/drawable/two_corner_background.xml" value="0.156" />
         <entry key="..\:/TheCarOwner/mastergarage/mastergarage/app/src/main/res/layout/activity_login.xml" value="0.264" />

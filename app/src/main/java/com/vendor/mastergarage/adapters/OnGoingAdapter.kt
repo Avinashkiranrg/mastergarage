@@ -41,24 +41,23 @@ class OnGoingAdapter(
         holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-    /*    holder.itemBinding.estimatedTotal.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+        //holder.itemBinding.estimatedTotal.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
 
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
 //            leadItem.registrationNo?.toFormattedString(p)
 
-        holder.itemBinding.bKTime.text = "${leadItem.bookingDate} at ${leadItem.bookingTime}"
+        holder.itemBinding.bKTime.text = "${leadItem.booking_date} at ${leadItem.booking_time}"
         holder.itemBinding.pKTime.text =
-            "${leadItem.bookingDate} at ${leadItem.bookingTime}"
+            "${leadItem.appointment_date} at ${leadItem.appointment_time}"
 
-        holder.itemBinding.lastUpdateDate.text = "Last updated on ${leadItem.lastUpDate}"
-        holder.itemBinding.status.text = "${leadItem.update_remarks}"
+       // holder.itemBinding.lastUpdateDate.text = "Last updated on ${leadItem.lastUpDate}"
+       // holder.itemBinding.status.text = "${leadItem.update_remarks}"
 
-        val bitmap = leadItem.vImageUri?.let { context.assetsToBitmapModel(it) }
+        val bitmap = leadItem.v_imageUri?.let { context.assetsToBitmapModel(it) }
         bitmap?.apply {
             holder.itemBinding.imageView.setImageBitmap(this)
         }
-*/
 
 //        if (leadItem.vImageUri != null) {
 //            try {

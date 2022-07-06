@@ -22,6 +22,7 @@ import com.vendor.mastergarage.databinding.DeleteDialogBoxBinding
 import com.vendor.mastergarage.databinding.FragmentPendingBinding
 import com.vendor.mastergarage.datastore.VendorPreference
 import com.vendor.mastergarage.model.LeadsItem
+import com.vendor.mastergarage.model.ResultOnGoing
 import com.vendor.mastergarage.networkcall.Response
 import com.vendor.mastergarage.ui.outerui.VehicleDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,7 +37,7 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
 
     private var size: Int? = null
 
-    var filterList: ArrayList<LeadsItem?>? = null
+    var filterList: ArrayList<ResultOnGoing?>? = null
 
     private lateinit var pendingAdapter: PendingAdapter
 
@@ -58,7 +59,7 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
                 }
                 is Response.Success -> {
                     if (it.data?.success == TRUE_INT) {
-                      /*  val vItem = it.data.result as MutableList<LeadsItem>
+                      /*  val vItem = it.data.result as MutableList<ResultOnGoing>
                         size = vItem.size
                         vItem.sortBy { it1 -> it1.leadId }
                         vItem.reverse()*/
@@ -95,17 +96,17 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
         private const val TAG = "PendingFragment"
     }
 
-    override fun onItemClick(leadItem: LeadsItem) {
+    override fun onItemClick(leadItem: ResultOnGoing) {
         val intent = Intent(requireActivity(), VehicleDetailsActivity::class.java)
         intent.putExtra("leadItem", leadItem)
         requireActivity().startActivity(intent)
     }
 
-    override fun onDecline(leadItem: LeadsItem) {
+    override fun onDecline(leadItem: ResultOnGoing) {
         confirmBoxDecline(requireActivity(), leadItem)
     }
 
-    private fun confirmBoxDecline(context: Context, leadItem: LeadsItem) {
+    private fun confirmBoxDecline(context: Context, leadItem: ResultOnGoing) {
         val dialogBuilder = AlertDialog.Builder(context)
         val inflater = this.layoutInflater
         val bindingBox: DeleteDialogBoxBinding = DeleteDialogBoxBinding.inflate(inflater)
@@ -169,11 +170,11 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
         alertDialog.show()
     }
 
-    override fun onItemConfirm(leadItem: LeadsItem, currentDate: String, currentTime: String) {
+    override fun onItemConfirm(leadItem: ResultOnGoing, currentDate: String, currentTime: String) {
         val last_up_date = currentDate
         val last_up_time = currentTime
-        val booking_date = leadItem.bookingDate
-        val booking_time = leadItem.bookingTime
+        val booking_date = leadItem.booking_date
+        val booking_time = leadItem.booking_time
         val outletId = leadItem.outletId
         val vehicleId = leadItem.vehicleId
         val leadId = leadItem.leadId
@@ -220,7 +221,7 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
                                                 } else {
                                                     vendorPreference.getVendorId.asLiveData().observe(requireActivity()) {
                                                         Log.e("UId", it.toString())
-                                                        viewModel.loadUi(it!!,"ongoing")
+                                                        viewModel.loadUi(it!!,"pending")
                                                     }
 
                                                 }
@@ -251,7 +252,7 @@ class PendingFragment : Fragment(), PendingAdapter.OnItemClickListener {
 
         vendorPreference.getVendorId.asLiveData().observe(requireActivity()) {
             Log.e("UId", it.toString())
-            viewModel.loadUi(it!!,"ongoing")
+            viewModel.loadUi(it!!,"pending")
         }
 
     }

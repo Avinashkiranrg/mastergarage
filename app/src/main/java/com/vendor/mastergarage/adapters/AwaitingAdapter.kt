@@ -24,7 +24,8 @@ class AwaitingAdapter(
     private val context: Context,
     private var list: List<ResultOnGoing>,
     private val onItemClickListener: OnItemClickListener,
-    private val acceptClicks : AcceptClicks
+    private val acceptClicks : AcceptClicks,
+    private val declineClicks : DeclineClicks
 ) :
     RecyclerView.Adapter<AwaitingAdapter.MyViewHolder>() {
     lateinit var recyclerView: RecyclerView
@@ -46,6 +47,12 @@ class AwaitingAdapter(
 
     }
 
+    interface DeclineClicks{
+
+        fun onDeclineClick(resultOnGoing: ResultOnGoing,position: Int)
+
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemBinding =
             AwaitingAdapterItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -61,6 +68,13 @@ class AwaitingAdapter(
         holder.itemBinding.confirmBtn.setOnClickListener {
 
             acceptClicks.onConfirmClick(leadItem,position)
+
+        }
+
+
+        holder.itemBinding.declineBtn.setOnClickListener {
+
+            declineClicks.onDeclineClick(leadItem,position)
 
         }
 

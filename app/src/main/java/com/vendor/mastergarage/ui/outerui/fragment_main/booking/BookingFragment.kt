@@ -58,7 +58,7 @@ class BookingFragment : Fragment() {
             Log.e("UId", it.toString())
             vendorId = it
             viewModel.getDashBoardData(vendorId!!)
-            Toast.makeText(requireActivity(), it.toString(), Toast.LENGTH_SHORT).show()
+//            Toast.makeText(requireActivity(), it.toString(), Toast.LENGTH_SHORT).show()
         }
 
         binding = FragmentBooking4Binding.inflate(inflater, container, false)
@@ -90,6 +90,7 @@ class BookingFragment : Fragment() {
                         binding.bookingPendingCount.setText(it.data.Pending)
                         binding.bookingDeliveredCount.setText(it.data.Develivered)
 
+                        binding.charts.clearChart()
                         binding.charts.addPieSlice( PieModel ("ongoing", it.data.Ongoing.toFloat(), Color.parseColor("#FFD700")));
                         binding.charts.addPieSlice( PieModel ("pending", it.data.Pending.toFloat(), Color.parseColor("#EE3132")));
                         binding.charts.addPieSlice( PieModel ("delivered", it.data.Develivered.toFloat(), Color.parseColor("#53B94D")));

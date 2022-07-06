@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.vendor.mastergarage.databinding.LayoutPendingBinding
 import com.vendor.mastergarage.model.LeadsItem
+import com.vendor.mastergarage.model.OnGoingRespo
 import com.vendor.mastergarage.model.ResultOnGoing
 import com.vendor.mastergarage.utlis.assetsToBitmapModel
 import com.vendor.mastergarage.utlis.calculateMoney
@@ -31,9 +32,9 @@ class PendingAdapter(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(leadItem: LeadsItem)
-        fun onItemConfirm(leadItem: LeadsItem, currentDate: String, currentTime: String)
-        fun onDecline(leadItem: LeadsItem)
+        fun onItemClick(leadItem: ResultOnGoing)
+        fun onItemConfirm(leadItem: ResultOnGoing, currentDate: String, currentTime: String)
+        fun onDecline(leadItem: ResultOnGoing)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -48,20 +49,20 @@ class PendingAdapter(
         holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-        /*   holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+      //   holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
 //            leadItem.registrationNo?.toFormattedString(p)
 
-        holder.itemBinding.bKTime.text = "${leadItem.bookingDate} at ${leadItem.bookingTime}"
+        holder.itemBinding.bKTime.text = "${leadItem.booking_date} at ${leadItem.booking_time}"
         holder.itemBinding.pKTime.text =
-            "${leadItem.appointmentDate} at ${leadItem.appointmentTime}"
+            "${leadItem.appointment_date} at ${leadItem.appointment_time}"
 
         val bitmap = leadItem.v_imageUri?.let { context.assetsToBitmapModel(it) }
         bitmap?.apply {
             holder.itemBinding.imageView.setImageBitmap(this)
         }
-*/
+
 //        if (leadItem.v_imageUri != null) {
 //            try {
 //                holder.itemBinding.imageView.imageFromUrl(leadItem.v_imageUri)
@@ -117,6 +118,9 @@ class PendingAdapter(
             onItemClickListener.onItemClick(leadItem)
         }
 
+
+*/
+
         val mills: Long = calculateMillis(leadItem)
         if (mills == 0L) {
             holder.itemBinding.declineBtn.visibility = View.GONE
@@ -129,8 +133,9 @@ class PendingAdapter(
             holder.itemBinding.timeLeft.visibility = View.VISIBLE
             holder.itemBinding.timeLeftHead.visibility = View.VISIBLE
         }
-*/
-        /* object : CountDownTimer(mills, 1000) {
+
+
+         object : CountDownTimer(mills, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val seconds: Long = millisUntilFinished / 1000
                 val minutes = seconds / 60
@@ -163,14 +168,13 @@ class PendingAdapter(
 
             onItemClickListener.onItemConfirm(leadItem, currentDate, currentTime)
         }
-*/
     }
-    private fun calculateMillis(leadItem: LeadsItem): Long {
+    private fun calculateMillis(leadItem: ResultOnGoing): Long {
 
         val calendar: Calendar = Calendar.getInstance()
-        val startTime: String = leadItem.bookingTime!!
-        val startDate: String = leadItem.bookingDate!!
-        val backupTime: Int = leadItem.backupTimer!!
+        val startTime: String = leadItem.booking_time!!
+        val startDate: String = leadItem.booking_date!!
+        val backupTime: Int = leadItem.backup_timer!!
         val df = SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.getDefault())
         val dStart: Date = getDateData("$startDate $startTime")
 
