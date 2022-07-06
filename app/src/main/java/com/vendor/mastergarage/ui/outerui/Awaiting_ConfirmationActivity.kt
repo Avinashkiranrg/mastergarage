@@ -1,5 +1,6 @@
 package com.vendor.mastergarage.ui.outerui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -48,6 +49,7 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
     var filterList: ArrayList<LeadsItem?>? = null
     var manager: LinearLayoutManager? = null
     var position: Int = 0
+    var resultOngoingConfirm=ResultOnGoing()
     private lateinit var awaitingAdapter: AwaitingAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +96,10 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
                 }
                 is Response.Success -> {
                     if (it.data?.success == Constraints.TRUE_INT) {
-                        goToActivitiesFinish(this, ConfirmActivity::class.java)
+                        val intent = Intent(this, ConfirmActivity::class.java)
+                        intent.putExtra("leadItem", resultOngoingConfirm)
+                        Log.e("resultOngoingConfirm",resultOngoingConfirm.toString())
+                        startActivity(intent)
                     } else {
                         Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT)
                             .show()
@@ -117,7 +122,10 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
                 }
                 is Response.Success -> {
                     if (it.data?.success == Constraints.TRUE_INT) {
-                        goToActivityFinish(this, DeclineActivity::class.java)
+                        val intent = Intent(this, DeclineActivity::class.java)
+                        intent.putExtra("leadItem", resultOngoingConfirm)
+                        Log.e("resultOngoingConfirm",resultOngoingConfirm.toString())
+                        startActivity(intent)
                     } else {
                         Toast.makeText(this, it.data?.message, Toast.LENGTH_SHORT)
                             .show()
@@ -237,30 +245,36 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
 
     }
 
-    override fun onItemClick(leadItem: LeadsItem) {
+    override fun onItemClick(leadItem: ResultOnGoing) {
+        val intent = Intent(this, VehicleDetailsActivity::class.java)
+        intent.putExtra("leadItem", leadItem)
+        startActivity(intent)
     }
 
     override fun onItemConfirm(leadItem: LeadsItem, currentDate: String, currentTime: String) {
     }
 
     override fun onDecline(leadItem: LeadsItem) {
+
     }
 
     override fun onConfirmClick(resultOnGoing: ResultOnGoing, position: Int) {
 
+        resultOngoingConfirm=resultOnGoing
+
         val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         sdf.timeZone = TimeZone.getTimeZone("UTC")
 
-        val sdfTime = SimpleDateFormat("hh:mm:ss aa", Locale.getDefault())
+        val sdfTime = SimpleDateFormat("hh:mm:ss", Locale.getDefault())
         sdfTime.timeZone = TimeZone.getTimeZone("UTC")
         sdfTime.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"))
 
         var acceptLeadsReq = AcceptLeadsReq(
-            resultOnGoing.leadId,
+            resultOnGoing.leadId!!,
             sdf.format(Date().time),
             sdfTime.format(Date().time),
-            resultOnGoing.booking_date,
-            resultOnGoing.booking_time,
+            resultOnGoing.booking_date!!,
+            resultOnGoing.booking_time!!,
             "${resultOnGoing.outletId}",
             "${resultOnGoing.vehicleId}",
             "${resultOnGoing.addressId}"
@@ -273,6 +287,7 @@ class Awaiting_ConfirmationActivity : AppCompatActivity(), AwaitingAdapter.OnIte
     }
 
     override fun onDeclineClick(resultOnGoing: ResultOnGoing, position: Int) {
+        resultOngoingConfirm=resultOnGoing
         acceptLeadsviewModel.declineLeads(resultOnGoing.leadId!!)
     }
 

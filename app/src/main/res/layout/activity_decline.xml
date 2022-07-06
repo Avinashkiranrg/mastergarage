@@ -45,7 +45,7 @@
             android:textSize="15sp" />
 
         <TextView
-            android:id="@+id/tvtext2"
+            android:id="@+id/booking_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tvtext1"
@@ -57,10 +57,10 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/tvtext3"
+            android:id="@+id/amount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tvtext2"
+            android:layout_below="@+id/booking_id"
             android:layout_centerInParent="true"
             android:layout_marginTop="25dp"
             android:fontFamily="@font/poppins_bold"
@@ -73,7 +73,7 @@
             android:id="@+id/cardviewcontinue"
             android:layout_width="250dp"
             android:layout_height="55dp"
-            android:layout_below="@+id/tvtext3"
+            android:layout_below="@+id/amount"
             android:layout_centerInParent="true"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"

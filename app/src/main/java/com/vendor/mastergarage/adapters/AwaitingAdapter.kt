@@ -36,7 +36,7 @@ class AwaitingAdapter(
     }
 
     interface OnItemClickListener {
-        fun onItemClick(leadItem: LeadsItem)
+        fun onItemClick(leadItem: ResultOnGoing)
         fun onItemConfirm(leadItem: LeadsItem, currentDate: String, currentTime: String)
         fun onDecline(leadItem: LeadsItem)
     }
@@ -65,33 +65,22 @@ class AwaitingAdapter(
         holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-        holder.itemBinding.confirmBtn.setOnClickListener {
-
-            acceptClicks.onConfirmClick(leadItem,position)
-
-        }
 
 
-        holder.itemBinding.declineBtn.setOnClickListener {
-
-            declineClicks.onDeclineClick(leadItem,position)
-
-        }
-
-        /*   holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+           holder.itemBinding.amount.setText("₹ ${leadItem.totalCost}")
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
 //            leadItem.registrationNo?.toFormattedString(p)
 
-        holder.itemBinding.bKTime.text = "${leadItem.bookingDate} at ${leadItem.bookingTime}"
+      //  holder.itemBinding.bKTime.text = "${leadItem.bookingDate} at ${leadItem.bookingTime}"
         holder.itemBinding.pKTime.text =
-            "${leadItem.appointmentDate} at ${leadItem.appointmentTime}"
+            "${leadItem.appointment_time}"
+        holder.itemBinding.pKDate.text ="${leadItem.appointment_date}"
 
         val bitmap = leadItem.v_imageUri?.let { context.assetsToBitmapModel(it) }
         bitmap?.apply {
             holder.itemBinding.imageView.setImageBitmap(this)
         }
-*/
 //        if (leadItem.v_imageUri != null) {
 //            try {
 //                holder.itemBinding.imageView.imageFromUrl(leadItem.v_imageUri)
@@ -194,6 +183,25 @@ class AwaitingAdapter(
             onItemClickListener.onItemConfirm(leadItem, currentDate, currentTime)
         }
 */
+
+
+
+        holder.itemBinding.confirmBtn.setOnClickListener {
+
+            acceptClicks.onConfirmClick(leadItem,position)
+
+        }
+
+        holder.itemBinding.viewDetails.setOnClickListener {
+            onItemClickListener.onItemClick(leadItem)
+        }
+
+
+        holder.itemBinding.declineBtn.setOnClickListener {
+
+            declineClicks.onDeclineClick(leadItem,position)
+
+        }
     }
 
     private fun calculateMillis(leadItem: LeadsItem): Long {

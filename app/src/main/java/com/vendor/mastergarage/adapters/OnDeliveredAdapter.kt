@@ -41,22 +41,21 @@ class OnDeliveredAdapter(
         holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-    /*    holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+        holder.itemBinding.amount.setText("₹ ${leadItem.totalCost}")
 
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
 //            leadItem.registrationNo?.toFormattedString(p)
 
-        holder.itemBinding.deliveryTime.text =
-            "${leadItem.deliveryDate} at ${leadItem.deliveryTime}"
+//        holder.itemBinding.deliveryTime.text =
+//            "${leadItem.boo} at ${leadItem.deliveryTime}"
 //        holder.itemBinding.pKTime.text =
 //            "${leadItem.pickupDate} at ${leadItem.pickupTime}"
 
-        val bitmap = leadItem.vImageUri?.let { context.assetsToBitmapModel(it) }
+        val bitmap = leadItem.v_imageUri?.let { context.assetsToBitmapModel(it) }
         bitmap?.apply {
             holder.itemBinding.imageView.setImageBitmap(this)
         }
-*/
 
 //        if (leadItem.vImageUri != null) {
 //            try {

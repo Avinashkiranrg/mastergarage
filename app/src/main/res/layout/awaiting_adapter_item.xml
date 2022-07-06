@@ -31,6 +31,7 @@
             android:textSize="@dimen/fourteen_dip_text_size" />
 
         <TextView
+            android:id="@+id/amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -145,6 +146,7 @@
                         android:gravity="center">
 
                         <ImageView
+                            android:id="@+id/imageView"
                             android:layout_width="100dp"
                             android:layout_height="80dp"
                             android:src="@drawable/car2" />
@@ -184,6 +186,7 @@
                             android:textSize="@dimen/fourteen_dip_text_size" />
 
                         <TextView
+                            android:id="@+id/pKDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -196,6 +199,7 @@
                             android:textSize="@dimen/eighteen_dip_text_size" />
 
                         <TextView
+                            android:id="@+id/pKTime"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -278,6 +282,7 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/view_details"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:text="View Drtails"

@@ -49,7 +49,7 @@ class PendingAdapter(
         holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-      //   holder.itemBinding.amount.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+         holder.itemBinding.amount.setText("₹ ${leadItem.totalCost}")
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
 //            leadItem.registrationNo?.toFormattedString(p)

@@ -103,18 +103,7 @@ interface ApiInterface {
         @Field("outletId") outletId: Int
     ): Response<ServiceAdvisorResponse>
 
-    @FormUrlEncoded
-    @POST("acceptLeads.php")
-    suspend fun acceptLeads(
-        @Field("leadId") leadId: String,
-        @Field("last_up_date") last_up_date: String,
-        @Field("last_up_time") last_up_time: String,
-        @Field("booking_date") booking_date: String,
-        @Field("booking_time") booking_time: String,
-        @Field("outletId") outletId: String,
-        @Field("vehicleId") vehicleId: String,
-        @Field("addressId") addressId: String
-    ): Response<AcceptLeadsResp>
+
 
 
 //    @FormUrlEncoded
@@ -321,6 +310,19 @@ interface ApiInterface {
         @Field("addressId") addressId: Int,
         @Field("leadId") leadId: Int
     ): Response<UpdateStatus>
+
+    @FormUrlEncoded
+    @POST("acceptLeads.php")
+    suspend fun acceptLeads(
+        @Field("leadId") leadId: String,
+        @Field("last_up_date") last_up_date: String,
+        @Field("last_up_time") last_up_time: String,
+        @Field("booking_date") booking_date: String,
+        @Field("booking_time") booking_time: String,
+        @Field("outletId") outletId: String,
+        @Field("vehicleId") vehicleId: String,
+        @Field("addressId") addressId: String
+    ): Response<AcceptLeadsResp>
 
     @FormUrlEncoded
     @POST("closedLeads.php")

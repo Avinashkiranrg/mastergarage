@@ -15,6 +15,7 @@ import coil.size.Scale
 import coil.transform.CircleCropTransformation
 import com.bumptech.glide.Glide
 import com.vendor.mastergarage.model.LeadsItem
+import com.vendor.mastergarage.model.ResultOnGoing
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -109,12 +110,12 @@ fun isBetweenValidTimeCombined(startTime: Date?, endTime: Date, validateTime: Da
     return validTimeFlag
 }
 
-fun calculateMillis(leadItem: LeadsItem): Long {
+fun calculateMillis(leadItem: ResultOnGoing): Long {
 
     val calendar: Calendar = Calendar.getInstance()
-    val startTime: String = leadItem.bookingTime!!
-    val startDate: String = leadItem.bookingDate!!
-    val backupTime: Int = leadItem.backupTimer!!
+    val startTime: String = leadItem.booking_time!!
+    val startDate: String = leadItem.booking_date!!
+    val backupTime: Int = leadItem.backup_timer!!
     val df = SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.getDefault())
     val dStart: Date = getDateData("$startDate $startTime")
 

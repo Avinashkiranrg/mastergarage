@@ -29,10 +29,7 @@ import com.vendor.mastergarage.constraints.Constraints.Companion.WORK_IN_PROGRES
 import com.vendor.mastergarage.databinding.ActivityVehicleDetails6Binding
 import com.vendor.mastergarage.datastore.ModelPreferencesManager
 import com.vendor.mastergarage.datastore.VendorPreference
-import com.vendor.mastergarage.model.DriversItem
-import com.vendor.mastergarage.model.LeadsItem
-import com.vendor.mastergarage.model.OnDeliveredItem
-import com.vendor.mastergarage.model.OnGoingDataItem
+import com.vendor.mastergarage.model.*
 import com.vendor.mastergarage.networkcall.Response
 import com.vendor.mastergarage.ui.notifications.NotificationUi
 import com.vendor.mastergarage.ui.outerui.fragment_main.booking.BookingFragment.Companion.NUM_TABS
@@ -95,7 +92,7 @@ class VehicleDetailsActivity : AppCompatActivity(), jobCardInterfaceListener {
 
         try {
 
-            val leadsItem = intent.getParcelableExtra<LeadsItem>("leadItem")
+            val leadsItem = intent.getParcelableExtra<ResultOnGoing>("leadItem")
             val onGoingDataItem = intent.getParcelableExtra<OnGoingDataItem>("onGoingDataItem")
             val onDeliveredItem = intent.getParcelableExtra<OnDeliveredItem>("onDeliveredItem")
             val status = intent.getStringExtra("status")
@@ -105,7 +102,7 @@ class VehicleDetailsActivity : AppCompatActivity(), jobCardInterfaceListener {
                 leadId = leadsItem.leadId
                 vehicleId = leadsItem.vehicleId
                 addressId = leadsItem.addressId
-                binding.estimatedTotal.setText("₹ ${leadsItem.paymentInfo?.let { calculateMoney(it) }}")
+                binding.estimatedTotal.setText("₹ ${leadsItem.totalCost}")
 
 //                leadId?.let { viewModel.getLeadsById(it) }
                 try {
@@ -117,15 +114,15 @@ class VehicleDetailsActivity : AppCompatActivity(), jobCardInterfaceListener {
                 }
 //                variants = leadsItem.variants
                 fuelType = leadsItem.fuelType
-                manufacturerName = leadsItem.manufacturerName
-                model = leadsItem.model.toString()
+                manufacturerName = leadsItem.manufacturer_name
+               // model = leadsItem.model.toString()
 
 //                registrationNo = leadsItem.registrationNo
 //                engineNo = leadsItem.engineNo
 //                classicNo = leadsItem.classicNo
 
                 binding.carFuelType.text = leadsItem.fuelType
-                binding.carName.text = leadsItem.manufacturerName
+                binding.carName.text = leadsItem.manufacturer_name
 //                binding.name.text = leadsItem.owner_name
                 val p1 = "### ###"
                 binding.city.text =
@@ -806,11 +803,11 @@ class VehicleDetailsActivity : AppCompatActivity(), jobCardInterfaceListener {
         })
     }
 
-    private fun onItemConfirm(leadItem: LeadsItem, currentDate: String, currentTime: String) {
+    private fun onItemConfirm(leadItem: ResultOnGoing, currentDate: String, currentTime: String) {
         val last_up_date = currentDate
         val last_up_time = currentTime
-        val booking_date = leadItem.bookingDate
-        val booking_time = leadItem.bookingTime
+        val booking_date = leadItem.booking_date
+        val booking_time = leadItem.booking_time
         val outletId = leadItem.outletId
         val vehicleId = leadItem.vehicleId
         val leadId = leadItem.leadId

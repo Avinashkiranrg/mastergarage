@@ -41,7 +41,7 @@ class OnGoingAdapter(
         holder.itemBinding.carName.text = "${leadItem.manufacturer_name}"
         holder.itemBinding.carFuelType.text = leadItem.fuelType
 
-        //holder.itemBinding.estimatedTotal.setText("₹ ${leadItem.paymentInfo?.let { calculateMoney(it) }}")
+        holder.itemBinding.estimatedTotal.setText("₹ ${leadItem.totalCost}")
 
 //        val p = "## ## ## ####"
 //        holder.itemBinding.registrationNumber.text =
